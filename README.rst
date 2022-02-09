@@ -1,6 +1,9 @@
 # Felxi-TEER
 TEER device capable of being easily used in many applications including being an EVOM meter
 
-.. Contents::
+.. contents::
 
-.. Imaging::
+.. imaging::
+dgflkfdgnfdklg
+
+.. fun::
