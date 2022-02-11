@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>TEER Theory &#8212; Felxi-TEER 1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Welcome to Felxi-TEER’s documentation!" href="../index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="teer-theory">
+<h1>TEER Theory<a class="headerlink" href="#teer-theory" title="Permalink to this headline">¶</a></h1>
+<p>![](<a class="reference external" href="https://github.com/mdanderson03/Felxi-TEER/blob/11124297eae28fc72f78af3b5448df1af65e0caa/passive%20diffusion.png">https://github.com/mdanderson03/Felxi-TEER/blob/11124297eae28fc72f78af3b5448df1af65e0caa/passive%20diffusion.png</a>)</p>
+<p>The typical use of TEER is with transwells. In these, monolayers of cells are formed and ions can passively diffuse through the gaps between cells.</p>
+<p>![](<a class="reference external" href="https://github.com/mdanderson03/Felxi-TEER/blob/11124297eae28fc72f78af3b5448df1af65e0caa/passive%20diffusion2.png">https://github.com/mdanderson03/Felxi-TEER/blob/11124297eae28fc72f78af3b5448df1af65e0caa/passive%20diffusion2.png</a>)</p>
+<p>Lets start forming a model on this. So if a gap has a tight junction formed, it blocks the ion from going through it. If it lacks a tight junction, then the ion can go on through. Lets translate that into a simple electrical circuit model.</p>
+<p>![](<a class="reference external" href="https://github.com/mdanderson03/Felxi-TEER/blob/11124297eae28fc72f78af3b5448df1af65e0caa/passive%20diffusion3.png">https://github.com/mdanderson03/Felxi-TEER/blob/11124297eae28fc72f78af3b5448df1af65e0caa/passive%20diffusion3.png</a>)</p>
+<p>So we replace tight junctions with open circuits and given gaps restrict the rate that charged particles can pass through the monolayer, lets say they are  resistors. So <strong>tight junctions = open circuit</strong> and <strong>gaps = resistors</strong></p>
+<p><strong>Ohm’s Law</strong></p>
+<p>$$V = I*R$$ (1)
+<strong>Parallel Resistance Equivalency</strong></p>
+<p>$$R_{eq} = dfrac{1}{(sum{dfrac{1}{R_g}})}$$(2)
+$$R_{1} approx R_{2} approx R_{3} approx … approx R_{G}$$(3)
+Sub [3] into [2]
+$$R_{eq} = dfrac{1}{(dfrac{1}{R_G}*N_{G})}=dfrac{R_{G}}{N_{G}}$$(4)
+$$N_{CJ}=N_{TJ}+N_{G} to N_{G} = N_{CJ}-N_{TJ}$$(5)
+Sub (3) into (4) and taylor expand
+$$R_{eq}=dfrac{R_{G}}{N_{CJ}*(1-dfrac{ N_{TJ}} {N_{CJ}})} to dfrac{R_{eq}*N_{CJ}}{R_{G}}
+= dfrac{1}{(1-dfrac{N_{TJ}}{N_{CJ}})} approx 1+ dfrac{N_{TJ}}{N_{CJ}}$$(6)
+Thus
+$$R_{eq} propto N_{TJ}$$(7)</p>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Felxi-TEER</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">TEER Theory</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../index.html" title="previous chapter">Welcome to Felxi-TEER’s documentation!</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, MD Anderson.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/pages/TEER-Theory.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
