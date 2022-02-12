@@ -29,4 +29,6 @@ Thus
 $$R_{eq} \propto N_{TJ}$$(7)
 
 ..math:: $x^2$
+..math::
+$y^2$
 
