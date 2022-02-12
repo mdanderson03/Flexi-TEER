@@ -28,7 +28,5 @@ $$R_{eq}=\dfrac{R_{G}}{N_{CJ}*(1-\dfrac{ N_{TJ}} {N_{CJ}})} \to \dfrac{R_{eq}*N_
 Thus
 $$R_{eq} \propto N_{TJ}$$(7)
 
-..math:: $x^2$
-..math::
-$y^2$
+Since Pythagoras, we know that :math:`a^2 + b^2 = c^2`.
 
