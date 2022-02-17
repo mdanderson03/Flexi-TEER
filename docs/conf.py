@@ -30,7 +30,9 @@ release = '1.0'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.mathjax', 'sphinx.ext.imgmath']
+extensions = ['sphinx_math_dollar', 'sphinx.ext.mathjax']
+
+imgmath_use_preview = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -52,3 +54,8 @@ html_theme = 'alabaster'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+mat_number_all = True
+math_numfig = True
+numfig_secnum_depth = 2
+math_eqref_format = "Eq.{name}"
