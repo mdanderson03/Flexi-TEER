@@ -11,7 +11,8 @@ Welcome to Felxi-TEER's documentation!
    :caption: Contents:
    :numbered:
 
-   pages/TEER-Theory
+   pages/DC TEER-Theory
+   pages/AC TEER-Theory
 
 
 Indices and tables

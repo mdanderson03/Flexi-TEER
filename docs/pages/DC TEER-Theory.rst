@@ -1,5 +1,5 @@
-TEER Theory
-===========
+DC TEER Theory
+==============
 
 .. image:: C:\Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/passive_diffusion.png
   :width: 800
