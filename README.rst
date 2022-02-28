@@ -1,9 +1,6 @@
-# Felxi-TEER
-TEER device capable of being easily used in many applications including being an EVOM meter
+READ ME
+=======
 
-.. contents::
+Welcome to the Felxi-TEER project. This project is about an adaptable, powerful open-source transepitheal electrical resistance device. This device will have wifi communication, generic electrode port (RJ45) and will be capable of both locked freq and impedence spectrocopy measurements. 
 
-.. imaging::
-dgflkfdgnfdklg
-
-.. fun::
+Currently this project is under development and the documentation is on the github wiki and here: file:///C:/Users/mike/Documents/GitHub/Felxi-TEER/docs/_build/html/index.html
