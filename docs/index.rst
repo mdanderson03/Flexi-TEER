@@ -14,7 +14,6 @@ Welcome to Felxi-TEER's documentation!
    pages/DC TEER-Theory
    pages/AC TEER-Theory
 
-
 Indices and tables
 ==================
 
