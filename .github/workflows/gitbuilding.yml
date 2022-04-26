@@ -21,6 +21,6 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: main
-          FOLDER: docs/
+          FOLDER: 
           # Automatically remove deleted files from the deploy branch
           CLEAN: true
