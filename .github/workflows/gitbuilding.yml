@@ -21,6 +21,6 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: main
-          FOLDER: 
+          FOLDER: https://github.com/mdanderson03/Felxi-TEER/blob/main/.github/
           # Automatically remove deleted files from the deploy branch
           CLEAN: true
