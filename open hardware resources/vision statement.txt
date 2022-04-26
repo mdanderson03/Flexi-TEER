@@ -1,0 +1,1 @@
+I am working with bioengineers in Boston to develop a device to perform transepitheal electrical resistance (TEER) fixed frequency and frequency swept measurements on a wide variety of platforms like transwells and microscopy sample holders. 
