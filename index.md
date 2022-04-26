@@ -9,8 +9,8 @@ At this moment, we are looking for new people to contribute to this open source 
 
 
 
-* [.](theory.md){step}
-* [.](assembly_instructions.md){step}
-* [.](needed_modules.md){step}
+* [.](docs/theory.md){step}
+* [.](docs/assembly_instructions.md){step}
+* [.](docs/needed_modules.md){step}
 
  The following link is for the [bill of materials]{BOM} page.
