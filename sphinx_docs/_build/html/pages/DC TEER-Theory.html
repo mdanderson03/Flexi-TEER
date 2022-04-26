@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1. DC TEER Theory &#8212; Felxi-TEER 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. AC TEER Theory" href="AC%20TEER-Theory.html" />
+    <link rel="prev" title="Welcome to Felxi-TEER’s documentation!" href="../index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="dc-teer-theory">
+<h1><span class="section-number">1. </span>DC TEER Theory<a class="headerlink" href="#dc-teer-theory" title="Permalink to this headline">¶</a></h1>
+<a class="reference internal image-reference" href="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/passive_diffusion.png"><img alt="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/passive_diffusion.png" src="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/passive_diffusion.png" style="width: 800px;" /></a>
+<p>The typical use of TEER is with transwells. In these, monolayers of cells are formed and ions can passively diffuse through the gaps between cells.</p>
+<a class="reference internal image-reference" href="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/passive_diffusion2.png"><img alt="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/passive_diffusion2.png" src="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/passive_diffusion2.png" style="width: 800px;" /></a>
+<p>Lets start forming a model on this. So if a gap has a tight junction formed, it blocks the ion from going through it. If it lacks a tight junction, then the ion can go on through. Lets translate that into a simple electrical circuit model.</p>
+<a class="reference internal image-reference" href="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/passive_diffusion3.png"><img alt="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/passive_diffusion3.png" src="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/passive_diffusion3.png" style="width: 800px;" /></a>
+<p>So we replace tight junctions and cells with open circuits and given gaps restrict the rate that charged particles can pass through the monolayer, lets say they are  resistors. So <strong>tight junctions and cells = open circuit</strong> and <strong>gaps = resistors</strong></p>
+<p><strong>Ohm’s Law</strong></p>
+<div class="math notranslate nohighlight" id="equation-ohm">
+<span class="eqno">(1)<a class="headerlink" href="#equation-ohm" title="Permalink to this equation">¶</a></span>\[V = I*R\]</div>
+<p><strong>Parallel Resistance Equivalency</strong></p>
+<div class="math notranslate nohighlight" id="equation-par-res">
+<span class="eqno">(2)<a class="headerlink" href="#equation-par-res" title="Permalink to this equation">¶</a></span>\[R_{eq} = \dfrac{1}{(\sum{\dfrac{1}{R_g}})}\]</div>
+<p>All gap resistances are approximately equal</p>
+<div class="math notranslate nohighlight" id="equation-3">
+<span class="eqno">(3)<a class="headerlink" href="#equation-3" title="Permalink to this equation">¶</a></span>\[R_{1} \approx R_{2} \approx R_{3} \approx ... \approx R_{G}\]</div>
+<p>Sub [3] into [2]</p>
+<div class="math notranslate nohighlight" id="equation-4">
+<span class="eqno">(4)<a class="headerlink" href="#equation-4" title="Permalink to this equation">¶</a></span>\[R_{eq} = \dfrac{1}{(\dfrac{1}{R_G}*N_{G})}=\dfrac{R_{G}}{N_{G}}\]</div>
+<div class="math notranslate nohighlight" id="equation-5">
+<span class="eqno">(5)<a class="headerlink" href="#equation-5" title="Permalink to this equation">¶</a></span>\[N_{CJ}=N_{TJ}+N_{G} \to N_{G} = N_{CJ}-N_{TJ}\]</div>
+<p>Sub (3) into (4) and taylor expand</p>
+<div class="math notranslate nohighlight" id="equation-6">
+<span class="eqno">(6)<a class="headerlink" href="#equation-6" title="Permalink to this equation">¶</a></span>\[R_{eq}=\dfrac{R_{G}}{N_{CJ}*(1-\dfrac{ N_{TJ}} {N_{CJ}})} \to \dfrac{R_{eq}*N_{CJ}}{R_{G}} = \dfrac{1}{(1-\dfrac{N_{TJ}}{N_{CJ}})} \approx 1+ \dfrac{N_{TJ}}{N_{CJ}}\]</div>
+<p>Thus</p>
+<div class="math notranslate nohighlight" id="equation-7">
+<span class="eqno">(7)<a class="headerlink" href="#equation-7" title="Permalink to this equation">¶</a></span>\[R_{eq} \propto N_{TJ}\]</div>
+<p>In the previous model we considered cell bodies themselves as open circuits, but is that accurate? Check out the image below to see that they are more accurately capacitors!</p>
+<a class="reference internal image-reference" href="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/membrane_cap.png"><img alt="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/membrane_cap.png" src="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/membrane_cap.png" style="width: 800px;" /></a>
+<p>Now lets add the cell capacitance and resistance due to the media into the model circuit</p>
+<a class="reference internal image-reference" href="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/cap_res_equiv.png"><img alt="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/cap_res_equiv.png" src="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/cap_res_equiv.png" style="width: 800px;" /></a>
+<p>We need Kirchoff Loop and Node Equations to solve this one:</p>
+<div class="math notranslate nohighlight" id="equation-kirch1">
+<span class="eqno">(8)<a class="headerlink" href="#equation-kirch1" title="Permalink to this equation">¶</a></span>\[\color{blue}{V_{in}-R_{media}*I -R_{TJ}*I_{TJ}=0}\]</div>
+<div class="math notranslate nohighlight" id="equation-kirch2">
+<span class="eqno">(9)<a class="headerlink" href="#equation-kirch2" title="Permalink to this equation">¶</a></span>\[\color{red}{V_{in}-R_{media}*I-V_{cells}=V_{in}-R_{media}*I-\dfrac{Q}{C_{cells}}=0}\]</div>
+<div class="math notranslate nohighlight" id="equation-kirch3">
+<span class="eqno">(10)<a class="headerlink" href="#equation-kirch3" title="Permalink to this equation">¶</a></span>\[\color{yellow}{I=I_{TJ}+I_{cells}}\]</div>
+<p>The node and loops look like this (color coordinated)</p>
+<a class="reference internal image-reference" href="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/kirchoff.png"><img alt="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/kirchoff.png" src="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/kirchoff.png" style="width: 800px;" /></a>
+<p>Set (8) equal to (9)</p>
+<div class="math notranslate nohighlight" id="equation-eq-11">
+<span class="eqno">(11)<a class="headerlink" href="#equation-eq-11" title="Permalink to this equation">¶</a></span>\[\dfrac{Q}{C_{cells}}=R_{TJ}*I_{TJ}\to \color{red}{I_{TJ}=\dfrac{Q}{R_{TJ}*C_{cells}}}\]</div>
+<p>Sub (11) into (10)</p>
+<div class="math notranslate nohighlight" id="equation-eq-12">
+<span class="eqno">(12)<a class="headerlink" href="#equation-eq-12" title="Permalink to this equation">¶</a></span>\[I = \dfrac{Q}{R_{TJ}*C_{cells}} + I_{cells}\]</div>
+<p>Sub (12) into (9)</p>
+<div class="math notranslate nohighlight" id="equation-eq-13">
+<span class="eqno">(13)<a class="headerlink" href="#equation-eq-13" title="Permalink to this equation">¶</a></span>\[V_{in}-R_{media}*(\dfrac{Q}{R_{TJ}*C_{cells}}+I_{cells})-\dfrac{Q}{C_{cells}}=0\]</div>
+<p>Divide by R media</p>
+<div class="math notranslate nohighlight" id="equation-eq-14">
+<span class="eqno">(14)<a class="headerlink" href="#equation-eq-14" title="Permalink to this equation">¶</a></span>\[\dfrac{V_{in}}{R_{media}}-I_{cells}-(\dfrac{1}{R_{TJ}*C_{cells}}-\dfrac{1}{R_{media}*C_{cells}})*Q=0\]</div>
+<p>Place I and Q onto opposite sides of equation</p>
+<div class="math notranslate nohighlight" id="equation-eq-15">
+<span class="eqno">(15)<a class="headerlink" href="#equation-eq-15" title="Permalink to this equation">¶</a></span>\[-R_{media}*C_{cells}*I_{cells}=(\dfrac{R_{media}}{R_{TJ}}+1)*Q-C_{cells}*V_{in}\]</div>
+<p>Given Q is built up on the membranes, the whole current that passes through cells is the time derivative of the charge and lets group some constants into a new constant</p>
+<div class="math notranslate nohighlight" id="equation-eq-16">
+<span class="eqno">(16)<a class="headerlink" href="#equation-eq-16" title="Permalink to this equation">¶</a></span>\[I_{cells}=\dfrac{\delta{Q}}{\delta{t}}, \alpha = \dfrac{R_{media}}{R_{TJ}} + 1\]</div>
+<p>Sub (16) into (15)</p>
+<div class="math notranslate nohighlight" id="equation-eq-17">
+<span class="eqno">(17)<a class="headerlink" href="#equation-eq-17" title="Permalink to this equation">¶</a></span>\[-R_{media}*C_{cells}*\dfrac{\delta{Q}}{\delta{t}}=\alpha*Q-C_{cells}*V_{in}\]</div>
+<p>Separate Q and t terms to opposite sides of equation</p>
+<div class="math notranslate nohighlight" id="equation-eq-18">
+<span class="eqno">(18)<a class="headerlink" href="#equation-eq-18" title="Permalink to this equation">¶</a></span>\[\dfrac{\delta{Q}}{Q-\dfrac{V_{in}*C_{cells}}{\alpha}}=\dfrac{-\alpha}{C_{cells}*R_{media}}*\delta{t}\]</div>
+<p>Integrate (18)</p>
+<div class="math notranslate nohighlight" id="equation-eq-19">
+<span class="eqno">(19)<a class="headerlink" href="#equation-eq-19" title="Permalink to this equation">¶</a></span>\[\int_{0}^{Q}  \dfrac{1}{Q-\dfrac{V_{in}*C_{cells}}{\alpha}}\delta{Q}=\int_{0}^{t} \dfrac{-\alpha}{C_{cells}*R_{media}}\delta{t}\]</div>
+<p>Solution to (19)</p>
+<div class="math notranslate nohighlight" id="equation-eq-20">
+<span class="eqno">(20)<a class="headerlink" href="#equation-eq-20" title="Permalink to this equation">¶</a></span>\[\ln{\dfrac{Q-\dfrac{V_{in}*C_{cells}}{\alpha}}{\dfrac{-V_{in}*C_{cells}}{\alpha}}}=\dfrac{-\alpha*t}{C_{cells}*R_{media}}\]</div>
+<p>Raise each side to power e and solve for Q</p>
+<div class="math notranslate nohighlight" id="equation-eq-21">
+<span class="eqno">(21)<a class="headerlink" href="#equation-eq-21" title="Permalink to this equation">¶</a></span>\[\color{red} Q(t)=\dfrac{V_{in}*C_{cells}}{\alpha}*(1-e^{\dfrac{-\alpha*t}{C_{cells}*R_{media}}})\]</div>
+<p>now lets solve for I and V for cells (time derivative of Q and Q/C respectively)</p>
+<div class="math notranslate nohighlight" id="equation-eq-22">
+<span class="eqno">(22)<a class="headerlink" href="#equation-eq-22" title="Permalink to this equation">¶</a></span>\[\color{red} I_{cells}(t)=\dfrac{V_{in}}{R_{media}}*e^{\dfrac{-\alpha*t}{C_{cells}*R_{media}}}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-23">
+<span class="eqno">(23)<a class="headerlink" href="#equation-eq-23" title="Permalink to this equation">¶</a></span>\[\color{red} V_{cells}(t)= \dfrac{V_{in}}{\alpha}*(1-e^{\dfrac{-\alpha*t}{C_{cells}*R_{media}}})\]</div>
+<p>Now lets insert a volt and an am meter into the circuit</p>
+<a class="reference internal image-reference" href="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/volt_am_dc_circuit.png"><img alt="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/volt_am_dc_circuit.png" src="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/volt_am_dc_circuit.png" style="width: 800px;" /></a>
+<div class="math notranslate nohighlight" id="equation-eq-24">
+<span class="eqno">(24)<a class="headerlink" href="#equation-eq-24" title="Permalink to this equation">¶</a></span>\[V_{meter}(t)=R_{TJ}*I_{TJ}(t)+R_{media}*I(t)\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-25">
+<span class="eqno">(25)<a class="headerlink" href="#equation-eq-25" title="Permalink to this equation">¶</a></span>\[Blank = R_{media}*I(t)\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-26">
+<span class="eqno">(26)<a class="headerlink" href="#equation-eq-26" title="Permalink to this equation">¶</a></span>\[V_{meter}(t)-Blank=R_{TJ}*I_{TJ}(t)\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-27">
+<span class="eqno">(27)<a class="headerlink" href="#equation-eq-27" title="Permalink to this equation">¶</a></span>\[I_{meter}(t)=I(t)=I_{cells}+I_{TJ} \to I_{TJ}=I_{meter}(t)-I_{cells}\]</div>
+<p>Sub (22) into (27)</p>
+<div class="math notranslate nohighlight" id="equation-eq-28">
+<span class="eqno">(28)<a class="headerlink" href="#equation-eq-28" title="Permalink to this equation">¶</a></span>\[I_{TJ}(t)=I_{meter}(t)-\dfrac{V_{in}}{R_{media}}*e^{\dfrac{-\alpha*t}{C_{cells}*R_{media}}}\]</div>
+<p>Sub (28) into (26) and solve for the tight junctional resistance</p>
+<div class="math notranslate nohighlight" id="equation-eq-29">
+<span class="eqno">(29)<a class="headerlink" href="#equation-eq-29" title="Permalink to this equation">¶</a></span>\[\color{red}R_{TJ}=\dfrac{V_{meter}(t)-Blank}{I_{meter}(t)-\dfrac{V_{in}}{R_{media}}*e^{\dfrac{-\alpha*t}{C_{cells}*R_{media}}}}\]</div>
+<p>So to solve for tight junctional resistance we must know how current has been applied to the circuit. That is a finicky to determine and beyond this we have a confounding factor of tight junction resistance being in the alpha term. To rectify this, lets drive this to inifinite time</p>
+<div class="math notranslate nohighlight" id="equation-eq-30">
+<span class="eqno">(30)<a class="headerlink" href="#equation-eq-30" title="Permalink to this equation">¶</a></span>\[R_{TJ}(t)=\dfrac{V_{meter}(t)-Blank}{I_{meter}(t)}\]</div>
+<p>This equation is easily solved with our instruments as long as we wait long enough. Lets take a stab at how fast that might be given I dont have infinite time to wait. Lets say we want to wait until the cell current has fallen to a factor of 0.01% of its original value</p>
+<div class="math notranslate nohighlight" id="equation-eq-31">
+<span class="eqno">(31)<a class="headerlink" href="#equation-eq-31" title="Permalink to this equation">¶</a></span>\[0.0001 =e^{\dfrac{-\alpha*t}{C_{cells}*R_{media}}}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-32">
+<span class="eqno">(32)<a class="headerlink" href="#equation-eq-32" title="Permalink to this equation">¶</a></span>\[\ln{0.0001}=\dfrac{-\alpha*t}{C_{cells}*R_{media}}, \alpha \approx 1 \quad if \quad R_{TJ} \gg R_{media}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-33">
+<span class="eqno">(33)<a class="headerlink" href="#equation-eq-33" title="Permalink to this equation">¶</a></span>\[-R_{media}*C_{cells}*\ln{0.0001}=t\]</div>
+<p>To find cells we take the unit capacitance and multiply by transwell area</p>
+<div class="math notranslate nohighlight" id="equation-eq-34">
+<span class="eqno">(34)<a class="headerlink" href="#equation-eq-34" title="Permalink to this equation">¶</a></span>\[C_{cells}=A_{transwell}*C_{unit}=3.3*10^{-5}*1*10^{-2}=3.3*10^{-7}, R_{media} \approx 50\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-35">
+<span class="eqno">(35)<a class="headerlink" href="#equation-eq-35" title="Permalink to this equation">¶</a></span>\[t = 3.3*10^{-7}*50*\ln{0.0001} \approx 0.1ms\]</div>
+<p>So saturation occurs very rapidly! We have another issue now. Its something that wasn’t addressed in the previous model. Lets check out what happens to an electrode the second current flows from it.</p>
+<a class="reference internal image-reference" href="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/electrode_cap.gif"><img alt="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/electrode_cap.gif" src="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/electrode_cap.gif" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/el_cap_trans.png"><img alt="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/el_cap_trans.png" src="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/el_cap_trans.png" style="width: 800px;" /></a>
+<div class="math notranslate nohighlight" id="equation-eq-36">
+<span class="eqno">(36)<a class="headerlink" href="#equation-eq-36" title="Permalink to this equation">¶</a></span>\[R_{TJ}+R_{TC}=R_{cells}\]</div>
+<p>Experiments can be made to emphasize the transcellular transport component, but in general</p>
+<div class="math notranslate nohighlight" id="equation-eq-37">
+<span class="eqno">(37)<a class="headerlink" href="#equation-eq-37" title="Permalink to this equation">¶</a></span>\[R_{TJ} \gg R_{TC}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-38">
+<span class="eqno">(38)<a class="headerlink" href="#equation-eq-38" title="Permalink to this equation">¶</a></span>\[R_{cells} \approx R_{TJ}\]</div>
+<p>Instead of resolving the entire equation with electrode capacitence in it, lets think of them like a current squeeze. At t=0, its like a short circuit, at infinite time its like a closed circuit. We also know the general form of how the current will change over time.</p>
+<div class="math notranslate nohighlight" id="equation-eq-39">
+<span class="eqno">(39)<a class="headerlink" href="#equation-eq-39" title="Permalink to this equation">¶</a></span>\[R_{TJ}=\dfrac{V_{meter}(t)-Blank}{I_{meter}(t)-\dfrac{V_{in}}{R_{media}}*e^{\dfrac{-\alpha*t}{C_{cells}*R_{media}}}}* \color{red} \dfrac{1}{e^{\dfrac{-\beta*t}{C_{e}*R_{media}*R_{TJ}}}}\]</div>
+<p>I dont really care what beta actually is. This is the correct form and that is all that is needed for this approximation. Lets see where this equation goes as t goes to infinity</p>
+<div class="math notranslate nohighlight" id="equation-eq-40">
+<span class="eqno">(40)<a class="headerlink" href="#equation-eq-40" title="Permalink to this equation">¶</a></span>\[as \quad t \to \infty, \quad R_{TJ} \to \infty\]</div>
+<p>This is nonsense, right? tight junctional resistance is constant, but what happened? In this model we assumed that all voltage dropped occured over media and the tight junctions. Now we are getting a drop over the electrode capcitance too. Lets substract that from (39) to get the proper equation.</p>
+<div class="math notranslate nohighlight" id="equation-eq-41">
+<span class="eqno">(41)<a class="headerlink" href="#equation-eq-41" title="Permalink to this equation">¶</a></span>\[R_{TJ}=\dfrac{V_{meter}(t)-Blank- \color{red} V_{c}(t)}{I_{meter}(t)-\dfrac{V_{in}}{R_{media}}*e^{\dfrac{-\alpha*t}{C_{cells}*R_{media}}}}*\dfrac{1}{e^{\dfrac{-\beta*t}{C_{e}*R_{media}*R_{TJ}}}}\]</div>
+<p>We have an issue though. The voltage drop over the electrode capacitance depends on time so we would need to solve the equation</p>
+<div class="math notranslate nohighlight" id="equation-eq-42">
+<span class="eqno">(42)<a class="headerlink" href="#equation-eq-42" title="Permalink to this equation">¶</a></span>\[\int_{0}^{t}I_{electrode}dt = \int_{0}^{t}\dfrac{1}{e^{\dfrac{-\beta*t}{C_{e}*R_{media}*R_{TJ}}}}dt\]</div>
+<p>That equation is difficult to solve accurately since it depends on us again knowing the exact time since the circuit was turned on. Is there a way to bypass this component though?</p>
+<a class="reference internal image-reference" href="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/4_electrode.png"><img alt="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/4_electrode.png" src="C:Users/mike/Documents/GitHub/Felxi-TEER/images/teer_theory/4_electrode.png" style="width: 800px;" /></a>
+<p>Up until now I was using the same electrodes to generate the current and read the voltage. If we make a new configuration where 2 separate voltage sensing electrodes are added and placed between the current electrodes and cell sample, we get a new configuration where the part of the circuit that the electrodes are measuring does not inlcude the electrode capcitor component, thus making it so we can revert make the original equation that never depended on the voltage drop over the electrode capacitor. Thus</p>
+<div class="math notranslate nohighlight" id="equation-eq-43">
+<span class="eqno">(43)<a class="headerlink" href="#equation-eq-43" title="Permalink to this equation">¶</a></span>\[\color{red} R_{TJ}=\dfrac{V_{meter}(t)}{I_{meter}(t)} - R_{blank}\]</div>
+<p>This still has a caveat where the electrode capacitance is still pinching current off. While my tight junctional resistance value does not care, at some point my current will become so small that my electronics cannot accurately measure it anymore. Now you may be asking well current still must go into the voltage electrodes right? In that case won’t they get capacitence themselves and we will be back in the same same boat. This is true and capacitance is a geometrical term so our capacitence is the same (assuming the electrodes are identical in shapes), but there is one big thing here.</p>
+<div class="math notranslate nohighlight" id="equation-eq-44">
+<span class="eqno">(44)<a class="headerlink" href="#equation-eq-44" title="Permalink to this equation">¶</a></span>\[V=\dfrac{Q}{C}\]</div>
+<p>The voltage drop is what really matters when we are measuring voltage differences, not the capcitence itself. If infinite time elapses we will be in the same boat, but in shorter time frames we are good. This is due to the current that the voltage electrodes flow is in the order of picoamps while the current electrodes make micro amps. This means the voltage drop over the voltage electrodes capacitence is much much lower at short time frames since the charge can only accumulate at a very low rate.</p>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Felxi-TEER</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. DC TEER Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AC%20TEER-Theory.html">2. AC TEER Theory</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../index.html" title="previous chapter">Welcome to Felxi-TEER’s documentation!</a></li>
+      <li>Next: <a href="AC%20TEER-Theory.html" title="next chapter"><span class="section-number">2. </span>AC TEER Theory</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, MD Anderson.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/pages/DC TEER-Theory.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
