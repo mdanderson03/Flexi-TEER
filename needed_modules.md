@@ -25,7 +25,10 @@ All hardware has been breadboard tested, but further testing and characterizatio
 
 
 
+
 ![](models/CustomtranswellTEERchamber002.stl)
+
+
 
 
 
@@ -33,7 +36,10 @@ All hardware has been breadboard tested, but further testing and characterizatio
 
 * Device to hold a series of these transwell cells in place. 
 
+
 ![](models/TEErMainDesignA.stl)
+
+
 
 
 
