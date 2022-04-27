@@ -10,7 +10,8 @@
 <link rel="icon" type="image/png" href="./static/Logo/favicon-16x16.png" sizes="16x16" />
 
     <link href="./static/style.css" rel="stylesheet">
-        </head>
+            <script type="text/javascript" src="./static/3d-viewer.js"></script>
+    </head>
 <body>
 <header class="site-header">
     <div class="wrapper">
@@ -54,19 +55,50 @@
         Assembly Instructions
     </a>
     </li>
-<li class="not-active">
-    <a class="not-active" href="./needed_modules.html">
+<li class="active">
+    <a class="active" href="./needed_modules.html">
         Modules that need development
     </a>
+        <ul class="sub-nav-list">
+                <li>
+            <a class="not-active" href="./hardware.html">
+                Hardware
+            </a>
+        </li>
+            </ul>
     </li>
 
                 </ul>
             </nav>
         </div>
         <div class="wrapper">
-    <h1>Missing Part</h1>
-
-<p>This documentation has specified a part, but not provided a link or further data.</p>
+    <h1 id="modules-that-need-development">Modules that need development</h1>
+<h2 id="hardware"><a href="hardware.html" title="">Hardware</a></h2>
+<ul>
+<li>Parts to be added<ul>
+<li>Multiplex IC</li>
+<li>Self Calibration Capability</li>
+<li>RJ45 Input Jack for Electrode</ul>
+<strong>Current Schematic Below</strong>:</li>
+</ul>
+</li>
+</ul>
+<p><embed src="documents/Schematic_Flexi-TEER_2022-04-20.pdf" type="application/pdf" width="100%" height="600px" /></p>
+<h2 id="hardware-testing">Hardware Testing</h2>
+<p>All hardware has been breadboard tested, but further testing and characterization with multimeters and oscilloscopes are needed. </p>
+<h2 id="accessories">Accessories</h2>
+<ul>
+<li>TEER chamber that holds transwell in place as well as electrodes. Below is current model. </li>
+</ul>
+<noscript><a href="models/CustomtranswellTEERchamber002.stl"></a></noscript>
+<p><gb3d-viewer src="models/CustomtranswellTEERchamber002.stl"></gb3d-viewer></p>
+<ul>
+<li>Device to hold a series of these transwell cells in place. </li>
+</ul>
+<noscript><a href="models/TEErMainDesignA.stl"></a></noscript>
+<p><gb3d-viewer src="models/TEErMainDesignA.stl"></gb3d-viewer></p>
+<hr />
+<p><a href="assembly_instructions.html">Previous page</a> | <a href="hardware.html">Next page</a></p>
     </div>
 </div>
 <footer class="site-footer">
