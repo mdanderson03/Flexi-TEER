@@ -23,4 +23,4 @@ jobs:
           BRANCH: main
           FOLDER: _site/
           # Automatically remove deleted files from the deploy branch
-          CLEAN: true
+          CLEAN: false
