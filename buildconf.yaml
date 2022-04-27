@@ -16,7 +16,7 @@ CustomCategories:
         DisplayName: Needs
     ICs:
         Reuse: False
-        DisplayName: Needs
+        DisplayName: ICs
 #    printedtool:
 #        Reuse: False
 #        DisplayName: Printed tools
@@ -34,5 +34,5 @@ CustomCategories:
 #WebsiteRoot: '/path/'
 
 #Uncomment below to disable fussy warnings
-#Fussy: False
+Fussy: False
 
