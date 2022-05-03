@@ -5,7 +5,7 @@
 [50 SMD Resistor]:Parts.yaml#resistor603
 [300 SMD Resistor]:Parts.yaml#resistor603
 [1k SMD Resistor]:Parts.yaml#resistor603
-[SPDT Switch]:Parts.yaml#MAX4644EUA+T
+[SPDT Switch]:Parts.yaml#MAX4644EUAT
 [ICL7660 Chargepump]:Parts.yaml#ICL7660SCPAZ
 [Arduino Nano]:Parts.yaml#Arduino
 [OP295 OP Amp]:Parts.yaml#OP295GPZ

@@ -17,7 +17,6 @@ Below is a breakdown of aspects of the project and what we are currently working
 
 * **[.](hardware.md){step}** (This explains all hardware)
 * **[.](Accessories.md){step}** (This explains current accessories)
-* **[.](needed_modules.md){step}** (This explains plans and what we are wanting to develop)
 
 
 **List Communication Channels: (Jira, Slack)**
