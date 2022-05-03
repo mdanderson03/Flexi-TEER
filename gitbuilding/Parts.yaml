@@ -119,7 +119,7 @@ ICL7660SCPAZ:
             Link: https://amz.run/5YmE
 
 MAX4644EUAT:
-    Name: MAX4644EUA+T SPDT switch
+    Name: MAX4644EUAT SPDT switch
     Description: >
         Ultra fast (nanosecond switch times) single pole dual throw (SPDT) switch
     Specs:
