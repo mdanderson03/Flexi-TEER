@@ -9,6 +9,8 @@
 
 Looking at the block diagram we can see that An Arduino was used as the microcontroller for the device. A AD9388 breakout board generates a square wave timing wave that goes between V and 0 volts. An H-Bridge made from single throw dual throw (SPDT) switches allows it to be made into an AC wave at the same freq, but between +-V Volts. A constant current chip forces the current in that AC wave to be locked into a small value (20uA). The voltage difference over the cells then goes into a high input impedance diff amp. Since the incoming signal is +-V_diff, it would generate an AC output which is then hard to read off. So inside that block are two more SPDT switches to flip what input what end goes to so that the high V is always in the same input which effectively makes the diff amp output a DC signal. This signal then goes into a 16bit ADC which can be read off onto the Arduino. 
 
+All schematics and PCB design we performed on the EasyEDA website. Click here to be directed to the project on [EasyEDA](https://oshwlab.com/md.anderson03/flexi-teer)
+
 Lets take a look at and explore the overall schematic:
 
 

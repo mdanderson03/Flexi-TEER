@@ -6,8 +6,8 @@ capacitor603:
         Footprint : Surface mount 603
     Suppliers:
         Amazon:
-            PartNo: B09SFT7L731
-            Link: https://www.amazon.com/CenryKay-Soldering-Electric-Universal-Pack%EF%BC%88Silver%EF%BC%89/dp/B09SFT7L73/ref=sr_1_1?keywords=B09SFT7L73&qid=1650653235&sr=8-1&th=1
+            PartNo: B071J24G7D
+            Link: https://amz.run/5Yli
 resistor603:
     Name: resistor_603
     Description: >
@@ -16,8 +16,8 @@ resistor603:
         Footprint : Surface mount 603
     Suppliers:
         Amazon:
-            PartNo: B09SFT7L731
-            Link: https://www.amazon.com/CenryKay-Soldering-Electric-Universal-Pack%EF%BC%88Silver%EF%BC%89/dp/B09SFT7L73/ref=sr_1_1?keywords=B09SFT7L73&qid=1650653235&sr=8-1&th=1
+            PartNo: B071J24G7D
+            Link: https://amz.run/5Yli
 
 Female_pin_header:
     Name: Female_pin_headers
@@ -27,41 +27,30 @@ Female_pin_header:
         Footprint : 2.54mm through hole pins
     Suppliers:
         Amazon:
-            PartNo: B07CWSXY7P
-            Link: https://www.amazon.com/Glarks-Connector-Assortment-Stackable-Breakaway/dp/B07CWSXY7P/ref=asc_df_B07CWSXY7P/?tag=hyprod-20&linkCode=df0&hvadid=309881068962&hvpos=&hvnetw=g&hvrand=446310297657975915&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9002230&hvtargid=pla-568363546467&psc=1
-
-Soldering_Iron_Tip:
-    Name: Soldering Iron Tip
-    Description: >
-        Best style and sized tip to solder small ICs with
-    Specs:
-        Tip Model : 900M-T-IS
-    Suppliers:
-        Amazon:
-            PartNo: B09SFT7L731
-            Link: https://www.amazon.com/CenryKay-Soldering-Electric-Universal-Pack%EF%BC%88Silver%EF%BC%89/dp/B09SFT7L73/ref=sr_1_1?keywords=B09SFT7L73&qid=1650653235&sr=8-1&th=1
+            PartNo: B09BDX69VX
+            Link: https://amz.run/5Ylj
 
 LM358:
     Name: LM358 OP Amp
     Description: >
         General use op amp
     Specs:
-        Footprint : SOIC-8
+        Footprint : DIP-8
     Suppliers:
         Amazon:
-            PartNo: B09SFT7L731
-            Link: https://www.amazon.com/CenryKay-Soldering-Electric-Universal-Pack%EF%BC%88Silver%EF%BC%89/dp/B09SFT7L73/ref=sr_1_1?keywords=B09SFT7L73&qid=1650653235&sr=8-1&th=1
+            PartNo: B07WQWPLSP
+            Link: https://amz.run/5Yll
 
 AD9833:
     Name: AD9833 Waveform Generator
     Description: >
         General use waveform generator with SPI interface
     Specs:
-        Footprint : 1x7 female pin header
+        Footprint : 1x7 female pin header breakout board
     Suppliers:
         Amazon:
-            PartNo: B09SFT7L731
-            Link: https://www.amazon.com/CenryKay-Soldering-Electric-Universal-Pack%EF%BC%88Silver%EF%BC%89/dp/B09SFT7L73/ref=sr_1_1?keywords=B09SFT7L73&qid=1650653235&sr=8-1&th=1
+            PartNo: B07KC4WQ2K
+            Link: https://amz.run/5Ylu
 
 REF200AU2K5:
     Name: REF200AU2K5 current sink
@@ -71,8 +60,8 @@ REF200AU2K5:
         Footprint : SOIC-8
     Suppliers:
         Amazon:
-            PartNo: B09SFT7L731
-            Link: https://www.amazon.com/CenryKay-Soldering-Electric-Universal-Pack%EF%BC%88Silver%EF%BC%89/dp/B09SFT7L73/ref=sr_1_1?keywords=B09SFT7L73&qid=1650653235&sr=8-1&th=1
+            PartNo: REF200AU/2K5
+            Link: https://www.mouser.com/ProductDetail/595-REF200AU-2K5
 
 ADS1115:
     Name: ADS1115 ADC
@@ -81,20 +70,20 @@ ADS1115:
     Specs:
         Footprint : breakout board
     Suppliers:
-        Amazon:
-            PartNo: B09SFT7L731
-            Link: https://www.amazon.com/CenryKay-Soldering-Electric-Universal-Pack%EF%BC%88Silver%EF%BC%89/dp/B09SFT7L73/ref=sr_1_1?keywords=B09SFT7L73&qid=1650653235&sr=8-1&th=1
+        Mouser:
+            PartNo: adafruit 1085
+            Link: https://www.mouser.com/ProductDetail/485-1085
 
 INA592IDGKR:
     Name: INA592IDGKR difference amp
     Description: >
         High accuracy difference amplifier
     Specs:
-        Footprint : VSSOP-8
+        Footprint : SOIC-8
     Suppliers:
         Amazon:
-            PartNo: B09SFT7L731
-            Link: https://www.amazon.com/CenryKay-Soldering-Electric-Universal-Pack%EF%BC%88Silver%EF%BC%89/dp/B09SFT7L73/ref=sr_1_1?keywords=B09SFT7L73&qid=1650653235&sr=8-1&th=1
+            PartNo: INA592IDT
+            Link: https://www.mouser.com/ProductDetail/595-INA592IDT
 
 OP295GPZ:
     Name: OP295GPZ OP Amp
@@ -103,20 +92,20 @@ OP295GPZ:
     Specs:
         Footprint : DIP-8
     Suppliers:
-        Amazon:
-            PartNo: B09SFT7L731
-            Link: https://www.amazon.com/CenryKay-Soldering-Electric-Universal-Pack%EF%BC%88Silver%EF%BC%89/dp/B09SFT7L73/ref=sr_1_1?keywords=B09SFT7L73&qid=1650653235&sr=8-1&th=1
+        Mouser:
+            PartNo: OP295GPZ
+            Link: https://www.mouser.com/ProductDetail/584-OP295GPZ
 
 Arduino:
     Name: ARDUINO_NANO_33_IoT
     Description: >
-        Specialized arduino nano that has faster processor and built in WiFi
+        Specialized arduino nano that has dual processors and built in WiFi
     Specs:
         Footprint : 40 pin
     Suppliers:
-        Amazon:
-            PartNo: B09SFT7L731
-            Link: https://www.amazon.com/CenryKay-Soldering-Electric-Universal-Pack%EF%BC%88Silver%EF%BC%89/dp/B09SFT7L73/ref=sr_1_1?keywords=B09SFT7L73&qid=1650653235&sr=8-1&th=1
+        Mouser:
+            PartNo: ABX00032
+            Link: https://www.mouser.com/ProductDetail/Arduino/ABX00032?qs=PzGy0jfpSMvMMiAhbligzQ%3D%3D
 
 ICL7660SCPAZ:
     Name: ICL7660SCPAZ switching votlage regulator
@@ -126,94 +115,96 @@ ICL7660SCPAZ:
         Footprint : DIP-8
     Suppliers:
         Amazon:
-            PartNo: B09SFT7L731
-            Link: https://www.amazon.com/CenryKay-Soldering-Electric-Universal-Pack%EF%BC%88Silver%EF%BC%89/dp/B09SFT7L73/ref=sr_1_1?keywords=B09SFT7L73&qid=1650653235&sr=8-1&th=1
+            PartNo: B08K8Z6VTK
+            Link: https://amz.run/5YmE
 
 MAX4644EUA+T:
     Name: MAX4644EUA+T SPDT switch
     Description: >
         Ultra fast (nanosecond switch times) single pole dual throw (SPDT) switch
     Specs:
-        Footprint : VSSOP-8
+        Footprint : UMAX-8
     Suppliers:
         Amazon:
-            PartNo: B09SFT7L731
-            Link: https://www.amazon.com/CenryKay-Soldering-Electric-Universal-Pack%EF%BC%88Silver%EF%BC%89/dp/B09SFT7L73/ref=sr_1_1?keywords=B09SFT7L73&qid=1650653235&sr=8-1&th=1
+            PartNo: MAX4644EUA+T
+            Link: https://www.mouser.com/ProductDetail/700-MAX4644EUA%2bT
 
 Curved_Solder_Iron_Tip:
-    Name: OP295GPZ OP Amp
+    Name: 900M-SI curved soldering iron tip
     Description: >
-        High performance op amp
+        Excellent tip design for tiny ICs in the foot print like SOIC-8
     Specs:
-        Footprint : DIP-8
+        Model : SI
     Suppliers:
         Amazon:
-            PartNo: B09SFT7L731
-            Link: https://www.amazon.com/CenryKay-Soldering-Electric-Universal-Pack%EF%BC%88Silver%EF%BC%89/dp/B09SFT7L73/ref=sr_1_1?keywords=B09SFT7L73&qid=1650653235&sr=8-1&th=1
+            PartNo: B07QV6SR6S
+            Link: https://amz.run/5YmG
 
 Straight_Solder_Iron_Tip:
-    Name: ARDUINO_NANO_33_IoT
+    Name: 900M-I straight, fine soldering iron tip
     Description: >
-        Specialized arduino nano that has faster processor and built in WiFi
+        Excellent tip design for through hole soldering like DIP-8
     Specs:
-        Footprint : 40 pin
+        Footprint : I
     Suppliers:
         Amazon:
-            PartNo: B09SFT7L731
-            Link: https://www.amazon.com/CenryKay-Soldering-Electric-Universal-Pack%EF%BC%88Silver%EF%BC%89/dp/B09SFT7L73/ref=sr_1_1?keywords=B09SFT7L73&qid=1650653235&sr=8-1&th=1
+            PartNo: B07QV6SR6S
+            Link: https://amz.run/5YmG
 
 0.5mm_solder:
-    Name: ICL7660SCPAZ switching votlage regulator
+    Name: 0.5mm solder
     Description: >
-        Switching voltage regulator that generates negative voltage rail
+        Fine solder good for through hole soldering
     Specs:
-        Footprint : DIP-8
+        Filament width: 0.5mm
     Suppliers:
         Amazon:
-            PartNo: B09SFT7L731
-            Link: https://www.amazon.com/CenryKay-Soldering-Electric-Universal-Pack%EF%BC%88Silver%EF%BC%89/dp/B09SFT7L73/ref=sr_1_1?keywords=B09SFT7L73&qid=1650653235&sr=8-1&th=1
+            PartNo: B07P7WX7F3
+            Link: https://amz.run/5YmH
 
 0.3mm_solder:
-    Name: MAX4644EUA+T SPDT switch
+    Name: 0.3mm solder
     Description: >
-        Ultra fast (nanosecond switch times) single pole dual throw (SPDT) switch
+        Vey fine solder great for tiny ICs like SOIC-8
     Specs:
-        Footprint : VSSOP-8
+        Filament width : 0.3mm
     Suppliers:
         Amazon:
-            PartNo: B09SFT7L731
-            Link: https://www.amazon.com/CenryKay-Soldering-Electric-Universal-Pack%EF%BC%88Silver%EF%BC%89/dp/B09SFT7L73/ref=sr_1_1?keywords=B09SFT7L73&qid=1650653235&sr=8-1&th=1
+            PartNo: B07P7WX7F3
+            Link: https://amz.run/5YmH
 
 wire_snips:
-    Name: ICL7660SCPAZ switching votlage regulator
+    Name: Wire Snips
     Description: >
-        Switching voltage regulator that generates negative voltage rail
-    Specs:
-        Footprint : DIP-8
+        Flush cut snips for flushing wires up
     Suppliers:
         Amazon:
-            PartNo: B09SFT7L731
-            Link: https://www.amazon.com/CenryKay-Soldering-Electric-Universal-Pack%EF%BC%88Silver%EF%BC%89/dp/B09SFT7L73/ref=sr_1_1?keywords=B09SFT7L73&qid=1650653235&sr=8-1&th=1
+            PartNo: B07GR7QF63
+            Link: https://amz.run/5YmJ
 
 solder_sucker:
-    Name: MAX4644EUA+T SPDT switch
+    Name: solder sucker
     Description: >
-        Ultra fast (nanosecond switch times) single pole dual throw (SPDT) switch
-    Specs:
-        Footprint : VSSOP-8
+        Sucks solder up to desolder joints
     Suppliers:
         Amazon:
-            PartNo: B09SFT7L731
-            Link: https://www.amazon.com/CenryKay-Soldering-Electric-Universal-Pack%EF%BC%88Silver%EF%BC%89/dp/B09SFT7L73/ref=sr_1_1?keywords=B09SFT7L73&qid=1650653235&sr=8-1&th=1
+            PartNo: B0739LXQ6N
+            Link: https://amz.run/5YmL
 
 Soldering_Iron:
-    Name: ICL7660SCPAZ switching votlage regulator
+    Name: Soldeirng Iron
     Description: >
-        Switching voltage regulator that generates negative voltage rail
-    Specs:
-        Footprint : DIP-8
+        Soldering Iron with sponge spot, helping hands and adjustable temp.
     Suppliers:
         Amazon:
-            PartNo: B09SFT7L731
-            Link: https://www.amazon.com/CenryKay-Soldering-Electric-Universal-Pack%EF%BC%88Silver%EF%BC%89/dp/B09SFT7L73/ref=sr_1_1?keywords=B09SFT7L73&qid=1650653235&sr=8-1&th=1
+            PartNo: B01DGZFSNE
+            Link: https://amz.run/5YmQ
 
+Grabber:
+    Name: Grabber tool
+    Description: >
+        grabber tool that helps grab and stabilize small ICs
+    Suppliers:
+        Amazon:
+            PartNo: B0912CGW3V
+            Link: https://amz.run/5YmU

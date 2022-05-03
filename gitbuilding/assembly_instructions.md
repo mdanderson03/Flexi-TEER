@@ -24,6 +24,8 @@
 [Wire Snips]:Parts.yaml#wire_snips
 [Solder Sucker]:Parts.yaml#solder_sucker
 [Soldering Iron]:Parts.yaml#Soldering_Iron
+[Grabber Tool]:Parts.yaml#Grabber
+[Soldering]{Qty:1, cat: skills}
 
 
 # Assembly Instructions
@@ -32,13 +34,43 @@
 
 ## Step 1: Order PCB
 
-Download the [Gerber File](files/Gerber_PCB_Flexi-TEER.zip) for the PCB. Go to [EasyEDA PCB ordering](https://docs.easyeda.com/en/PCB/Order-PCB/index.html ) website and follow instructions to order PCB from the gerber file. 
+1. Download the [Gerber File](files/Gerber_PCB_Flexi-TEER.zip), [BOM](files/BOM_PCB_Flexi-TEER_2022-05-02.csv) and [Pick and Place File](files/PickAndPlace_PCB_Flexi-TEER_2022-05-02.csv) for the PCB.
+* Sign into account or create an account if new.
+* Go to [JLCPCB Website](https://cart.jlcpcb.com/quote?edaOrderUrl=https%3A%2F%2Feasyeda.com%2Forder&electropolishingOnlyNo=no&achieveDate=72 ) website and upload Gerber zip folder. 
+* While on the page, drag and drop Gerber zip folder into area that asks for it. In the example image, I also used the SMT assembly service by selecting it.
+*  Upload **BOM** and **Pick and Place** .csv files. Select electronics and hobbies/developmental board for the description. 
+* Select parts that you desire to be soldered onto the board for you via the SMT assembly service.
 
-## Step 2: Solder Surface Mount Components (SMD)
-Solder components onto circuit board in the order below. A strategy that has worked well is to use a soldering iron with fine 0.5mm solder. First place some solder onto each pad for the component, then place component with tweezers and press into place with tweezers and gently touch each lead from the component with the soldering iron until the solder melts around it. 
+
+![](images/jlcpcbaddgerberresult.png)
+
+>i **Note**
+>i SMT Assembly service is an affordable service where certain components are soldered to the board for you. Not every current component is compatible with this service. I recommend using this as its time consuming to solder these very tiny components. 
+
+![](images/jlcpcbSMTservice.png)
+![](images/jlcpcbBOmandpickandplace.png)
+
+
+## Step 2: Order Components
+
+1. Go to [mouser project](https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=c21611a5ee) and order integrated circuit (IC) components. 
+* Order remaining generic parts such as 603 footprint resistors and capacitors. 
+
+>i **Note**
+>i If you used the SMT assembly service, you do not need to order those parts again. 
+
+>i **Note**
+>i Not all parts make sense to order individually. I recommend ordering the 603 footprint resistors and capacitors as part of variety book set. 
+
+
+## Step 3: Solder Surface Mount Components (SMD)
+Solder components onto circuit board in the order below with a [Soldering Iron]{Qty:1, cat: tool}. A strategy that has worked well with small chips is to use a soldering iron with very fine 0.3mm solder. First place some solder onto each pad for the component, then place component with [Grabber Tool]{Qty:1, cat: tool} and press into place with tweezers and gently touch each lead from the component with the soldering iron until the solder melts around it. 
 
 >i **Note**
 >i a [Curved Soldering Iron Tip]{Qty: 1, cat: tool} will help solder SMD components to board.
+
+>i **Note**
+>i If you used the SMT service, some of these parts may already be installed. 
 
 1. [10uF SMD Capacitor]{Qty: 2}
 * [35pF SMD Capacitor]{Qty: 2}
@@ -52,7 +84,7 @@ Solder components onto circuit board in the order below. A strategy that has wor
 * [REF200 Current Source]{Qty: 1}
 * [LM358 OP Amp]{Qty: 1}
 
-## Step 3: Solder Through Hole Components
+## Step 4: Solder Through Hole Components
 
 >i **Note**
 >i a [Straight Soldering Iron Tip]{Qty: 1, Cat: tool} will help solder through hole components to board.

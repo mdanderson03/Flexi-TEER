@@ -11,9 +11,9 @@ Email: md.anderson03@gmail.com
 
 #Uncomment below to add custom categories
 CustomCategories:
-    Needs:
+    Skills:
         Reuse: False
-        DisplayName: Needs
+        DisplayName: Skills
     ICs:
         Reuse: False
         DisplayName: ICs

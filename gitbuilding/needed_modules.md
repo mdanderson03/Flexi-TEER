@@ -1,6 +1,6 @@
 # Modules that need development
 
-
+Below is an overview of areas where we need contributers in. If you are interested in contributing to this project, please read through the **[.](contribution_guide.md){step}** beforehand. 
 ## [.](hardware.md){step}
 * Parts to be added
     * Multiplex IC
@@ -18,7 +18,10 @@ All hardware has been breadboard tested, but further testing and characterizatio
 
 
 
-## Accessories
+## [.](Accessories.md){step}
+
+We need the models below recreated in FreeCAD and a case for the electronics created. 
+
 * TEER chamber that holds transwell in place as well as electrodes. Below is current model. 
 
 
