@@ -13,7 +13,7 @@ At this moment, we are looking for new people to contribute to this open source 
 * [Tutorials](Tutorials.md)
 * [Theory](theory.md)
 * [Needed Modules](needed_modules.md)
-*[Contribution Guide]()contribution_guide.md)
+* [Contribution Guide]()contribution_guide.md)
 
 
  The following link is for the [bill of materials]{BOM} page.
