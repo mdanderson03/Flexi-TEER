@@ -9,10 +9,11 @@ At this moment, we are looking for new people to contribute to this open source 
 
 
 * [Assembly Instructions](assembly_instructions.md)
-* [.](General_use.md){step}
-* [.](Tutorials.md){step}
-* [.](theory.md){step}
-* [.](needed_modules.md){step}
+* [General Use.](General_use.md)
+* [Tutorials](Tutorials.md)
+* [Theory](theory.md)
+* [Needed Modules](needed_modules.md)
+*[Contribution Guide]()contribution_guide.md)
 
 
  The following link is for the [bill of materials]{BOM} page.
