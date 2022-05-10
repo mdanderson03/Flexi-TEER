@@ -8,7 +8,7 @@ Welcome to the Flexi-TEER project. This project is about an adaptable, powerful 
 At this moment, we are looking for new people to contribute to this open source project. Please check the modules that need development page to see what areas you can contribute in. 
 
 
-* [.](assembly_instructions.md){step}
+* [Assembly Instructions](assembly_instructions.md)
 * [.](General_use.md){step}
 * [.](Tutorials.md){step}
 * [.](theory.md){step}

@@ -1,7 +1,7 @@
 # Modules that need development
 
-Below is an overview of areas where we need contributers in. If you are interested in contributing to this project, please read through the  beforehand. 
-## [.](hardware.md){step}
+Below is an overview of areas where we need contributors in. If you are interested in contributing to this project, please read through the **[Contribution Guide](contribution_guide.md)** beforehand. 
+## [Hardware](hardware.md){step}
 * Parts to be added
     * Multiplex IC
     * Self Calibration Capability
@@ -18,7 +18,7 @@ All hardware has been breadboard tested, but further testing and characterizatio
 
 
 
-## [.](Accessories.md){step}
+## [Accessories](Accessories.md){step}
 
 We need the models below recreated in FreeCAD and a case for the electronics created. 
 
