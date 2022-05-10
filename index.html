@@ -37,31 +37,46 @@
     </a>
 </li>
 <li class="active">
-    <a class="active" href="../gitbuilding/index.html">
+    <a class="active" href="../website/index.html">
         Flexi-TEER
     </a>
         <ul class="sub-nav-list">
                 <li>
-            <a class="not-active" href="../gitbuilding/index_BOM.html">
+            <a class="not-active" href="../website/index_BOM.html">
                 Bill of Materials
             </a>
         </li>
                 <li>
-            <a class="not-active" href="../gitbuilding/theory.html">
-                Theory
-            </a>
-        </li>
-                <li>
-            <a class="not-active" href="../gitbuilding/assembly_instructions.html">
+            <a class="not-active" href="../website/assembly_instructions.html">
                 Assembly Instructions
             </a>
         </li>
                 <li>
-            <a class="not-active" href="../gitbuilding/needed_modules.html">
+            <a class="not-active" href="../website/General_use.html">
+                General Use
+            </a>
+        </li>
+                <li>
+            <a class="not-active" href="../website/Tutorials.html">
+                Tutorial
+            </a>
+        </li>
+                <li>
+            <a class="not-active" href="../website/theory.html">
+                Theory
+            </a>
+        </li>
+                <li>
+            <a class="not-active" href="../website/needed_modules.html">
                 Modules that need development
             </a>
         </li>
             </ul>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="../website/contribution_guide.html">
+        Contribute to Flexi-TEER
+    </a>
     </li>
 
                 </ul>
@@ -70,14 +85,38 @@
         <div class="wrapper">
     <h1 id="flexi-teer">Flexi-TEER</h1>
 <p><img alt="" src="images/logo.png" title="" /></p>
-<p>Welcome to the Flexi-TEER project. This project is about an adaptable, powerful open-source transepitheal electrical resistance device. This device will have wifi communication, generic electrode port (RJ45) and will be capable of both locked freq and impedence spectrocopy measurements.</p>
+<p>Welcome to the Flexi-TEER project. This project is about an adaptable, powerful open-source transepitheal electrical resistance device. </p>
 <p>At this moment, we are looking for new people to contribute to this open source project. Please check the modules that need development page to see what areas you can contribute in. </p>
 <ul>
-<li><a href="theory.html" title="">Theory</a></li>
 <li><a href="assembly_instructions.html" title="">Assembly Instructions</a></li>
+<li><a href="General_use.html" title="">General Use</a></li>
+<li><a href="Tutorials.html" title="">Tutorial</a></li>
+<li><a href="theory.html" title="">Theory</a></li>
 <li><a href="needed_modules.html" title="">Modules that need development</a></li>
 </ul>
 <p>The following link is for the <a href="index_BOM.html">bill of materials</a> <a href="index_BOM.csv">(csv)</a> page.</p>
+<h2 id="what-is-teer">What is TEER</h2>
+<p><strong>T</strong>rans<strong>E</strong>pithelial <strong>E</strong>lectrical <strong>R</strong>esistance (TEER) is an electrophysiology technique where resistance across a cell layer is measured as a proxy for ion flow which is related to inter-cellular tight junction formation. </p>
+<h2 id="why-do-we-need-an-open-source-teer-device">Why Do We Need an Open-Source TEER Device?</h2>
+<p>Currently, the primary commercial product is the <a href="https://www.wpiinc.com/evom3-epithelial-volt-ohm-teer-meter-3" target="_blank" title="">EVOM meter</a> from World Instrumentation. This device is not cheap, but also not super expensive. The real downside is that it lacks flexibility and connectivity. Examples of these are wireless communication with device via a python based API and reading sequentially through multiple electrodes. </p>
+<p>On the open-source side, no good solution currently exists. Current attempts are listed below:</p>
+<ul>
+<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8000980/" target="_blank" title="">EVOM Add on</a></li>
+<li><a href="https://chemrxiv.org/engage/chemrxiv/article-details/60c746bdbb8c1aa1073da918" target="_blank" title="">Low Cost TEER</a></li>
+<li><a href="https://www.jove.com/v/60087/a-simple-approach-to-perform-teer-measurements-using-self-made-volt" target="_blank" title="">Simple Meter</a></li>
+</ul>
+<p>Going through these options depend on the proprietary EVOM meter as a base, are dangerous and inaccurate or are clunky via the use of signal generators and multimeters. None of these are sufficient platforms to build off of. </p>
+<h2 id="project-goals">Project Goals</h2>
+<h4 id="device-goals">Device Goals</h4>
+<ol>
+<li>Robust TEER measurement operation (Fixed Frequency and Frequency Sweep)</li>
+<li>WiFi interface with a Python API</li>
+</ol>
+<h4 id="accessory-goals">Accessory Goals</h4>
+<ol>
+<li>3D printed cell to hold transwell inserts and keep electrodes in position</li>
+<li>3D printed platform to hold series of above cells.</li>
+</ol>
 <hr />
 <p><a href="index_BOM.html">Next page</a></p>
     </div>

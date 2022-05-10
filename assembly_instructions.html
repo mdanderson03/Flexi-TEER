@@ -37,31 +37,46 @@
     </a>
 </li>
 <li class="active">
-    <a class="active" href="../gitbuilding/index.html">
+    <a class="active" href="../website/index.html">
         Flexi-TEER
     </a>
         <ul class="sub-nav-list">
                 <li>
-            <a class="not-active" href="../gitbuilding/index_BOM.html">
+            <a class="not-active" href="../website/index_BOM.html">
                 Bill of Materials
             </a>
         </li>
                 <li>
-            <a class="not-active" href="../gitbuilding/theory.html">
-                Theory
-            </a>
-        </li>
-                <li>
-            <a class="active" href="../gitbuilding/assembly_instructions.html">
+            <a class="active" href="../website/assembly_instructions.html">
                 Assembly Instructions
             </a>
         </li>
                 <li>
-            <a class="not-active" href="../gitbuilding/needed_modules.html">
+            <a class="not-active" href="../website/General_use.html">
+                General Use
+            </a>
+        </li>
+                <li>
+            <a class="not-active" href="../website/Tutorials.html">
+                Tutorial
+            </a>
+        </li>
+                <li>
+            <a class="not-active" href="../website/theory.html">
+                Theory
+            </a>
+        </li>
+                <li>
+            <a class="not-active" href="../website/needed_modules.html">
                 Modules that need development
             </a>
         </li>
             </ul>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="../website/contribution_guide.html">
+        Contribute to Flexi-TEER
+    </a>
     </li>
 
                 </ul>
@@ -85,21 +100,58 @@
 <li>1 <a Class="bom" href="Parts/INA592IDGKR.html">INA592 Diff Amp</a> </li>
 <li>1 <a Class="bom" href="Parts/LM358.html">LM358 OP Amp</a> </li>
 <li>1 <a Class="bom" href="Parts/REF200AU2K5.html">REF200 Current Source</a> </li>
-<li>6 <a Class="bom" href="Parts/MAX4644EUA+T.html">SPDT Switch</a> </li>
+<li>6 <a Class="bom" href="Parts/MAX4644EUAT.html">SPDT Switch</a> </li>
 </ul>
 <h3 id="tools">Tools</h3>
 <ul>
 <li>1 <a Class="bom" href="Parts/Curved_Solder_Iron_Tip.html">Curved Soldering Iron Tip</a> </li>
+<li>1 <a Class="bom" href="Parts/Grabber.html">Grabber Tool</a> </li>
+<li>1 <a Class="bom" href="Parts/Soldering_Iron.html">Soldering Iron</a> </li>
 <li>1 <a Class="bom" href="Parts/Straight_Solder_Iron_Tip.html">Straight Soldering Iron Tip</a> </li>
 </ul>
 </div>
 <h2 id="step-1-order-pcb">Step 1: Order PCB</h2>
-<p>Download the <a href="files/Gerber_PCB_Flexi-TEER.zip" title="">Gerber File</a> for the PCB. Go to <a href="https://docs.easyeda.com/en/PCB/Order-PCB/index.html" target="_blank" title="">EasyEDA PCB ordering</a> website and follow instructions to order PCB from the gerber file. </p>
-<h2 id="step-2-solder-surface-mount-components-smd">Step 2: Solder Surface Mount Components (SMD)</h2>
-<p>Solder components onto circuit board in the order below. A strategy that has worked well is to use a soldering iron with fine 0.5mm solder. First place some solder onto each pad for the component, then place component with tweezers and press into place with tweezers and gently touch each lead from the component with the soldering iron until the solder melts around it. </p>
+<ol>
+<li>Download the <a href="files/Gerber_PCB_Flexi-TEER.zip" title="">Gerber File</a>, <a href="files/BOM_PCB_Flexi-TEER_2022-05-02.csv" title="">BOM</a> and <a href="files/PickAndPlace_PCB_Flexi-TEER_2022-05-02.csv" title="">Pick and Place File</a> for the PCB.</li>
+<li>Sign into account or create an account if new.</li>
+<li>Go to <a href="https://cart.jlcpcb.com/quote?edaOrderUrl=https%3A%2F%2Feasyeda.com%2Forder&amp;electropolishingOnlyNo=no&amp;achieveDate=72" target="_blank" title="">JLCPCB Website</a> website and upload Gerber zip folder. </li>
+<li>While on the page, drag and drop Gerber zip folder into area that asks for it. In the example image, I also used the SMT assembly service by selecting it.</li>
+<li>Upload <strong>BOM</strong> and <strong>Pick and Place</strong> .csv files. Select electronics and hobbies/developmental board for the description. </li>
+<li>Select parts that you desire to be soldered onto the board for you via the SMT assembly service.</li>
+</ol>
+<p><img alt="" src="images/jlcpcbaddgerberresult.png" title="" /></p>
+<div class="info-block">
+<p><strong>Note</strong>
+SMT Assembly service is an affordable service where certain components are soldered to the board for you. Not every current component is compatible with this service. I recommend using this as its time consuming to solder these very tiny components. </p>
+</div>
+<div class="gallery-thumb">
+    <img onmouseover="getElementById('gallery-show0').src=this.src" src="images/jlcpcbSMTservice.png" alt="" />
+    <img onmouseover="getElementById('gallery-show0').src=this.src" src="images/jlcpcbBOmandpickandplace.png" alt="" />
+</div>
+<div class="gallery-show"><img id="gallery-show0" src="images/jlcpcbSMTservice.png" alt=""/></div>
+
+<h2 id="step-2-order-components">Step 2: Order Components</h2>
+<ol>
+<li>Go to <a href="https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=c21611a5ee" target="_blank" title="">mouser project</a> and order integrated circuit (IC) components. </li>
+<li>Order remaining generic parts such as 603 footprint resistors and capacitors. </li>
+</ol>
+<div class="info-block">
+<p><strong>Note</strong>
+If you used the SMT assembly service, you do not need to order those parts again. </p>
+</div>
+<div class="info-block">
+<p><strong>Note</strong>
+Not all parts make sense to order individually. I recommend ordering the 603 footprint resistors and capacitors as part of variety book set. </p>
+</div>
+<h2 id="step-3-solder-surface-mount-components-smd">Step 3: Solder Surface Mount Components (SMD)</h2>
+<p>Solder components onto circuit board in the order below with a <a href="Parts/Soldering_Iron.html">Soldering Iron</a>. A strategy that has worked well with small chips is to use a soldering iron with very fine 0.3mm solder. First place some solder onto each pad for the component, then place component with <a href="Parts/Grabber.html">Grabber Tool</a> and press into place with tweezers and gently touch each lead from the component with the soldering iron until the solder melts around it. </p>
 <div class="info-block">
 <p><strong>Note</strong>
 a <a href="Parts/Curved_Solder_Iron_Tip.html">Curved Soldering Iron Tip</a> will help solder SMD components to board.</p>
+</div>
+<div class="info-block">
+<p><strong>Note</strong>
+If you used the SMT service, some of these parts may already be installed. </p>
 </div>
 <ol>
 <li><a href="Parts/capacitor603.html">10uF SMD Capacitor</a></li>
@@ -109,12 +161,12 @@ a <a href="Parts/Curved_Solder_Iron_Tip.html">Curved Soldering Iron Tip</a> will
 <li><a href="Parts/resistor603.html">50 SMD Resistor</a></li>
 <li><a href="Parts/resistor603.html">300 SMD Resistor</a></li>
 <li><a href="Parts/resistor603.html">1k SMD Resistor</a></li>
-<li><a href="Parts/MAX4644EUA+T.html">SPDT Switch</a></li>
+<li><a href="Parts/MAX4644EUAT.html">SPDT Switch</a></li>
 <li><a href="Parts/INA592IDGKR.html">INA592 Diff Amp</a></li>
 <li><a href="Parts/REF200AU2K5.html">REF200 Current Source</a></li>
 <li><a href="Parts/LM358.html">LM358 OP Amp</a></li>
 </ol>
-<h2 id="step-3-solder-through-hole-components">Step 3: Solder Through Hole Components</h2>
+<h2 id="step-4-solder-through-hole-components">Step 4: Solder Through Hole Components</h2>
 <div class="info-block">
 <p><strong>Note</strong>
 a <a href="Parts/Straight_Solder_Iron_Tip.html">Straight Soldering Iron Tip</a> will help solder through hole components to board.</p>
@@ -131,7 +183,7 @@ a <a href="Parts/Straight_Solder_Iron_Tip.html">Straight Soldering Iron Tip</a> 
 <h2 id="step-6-flash-arduino-sketch">Step 6: Flash Arduino Sketch</h2>
 <p>Currently no sketch is available.</p>
 <hr />
-<p><a href="ac_theory.html">Previous page</a> | <a href="needed_modules.html">Next page</a></p>
+<p><a href="index_BOM.html">Previous page</a> | <a href="General_use.html">Next page</a></p>
     </div>
 </div>
 <footer class="site-footer">
