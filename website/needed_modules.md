@@ -1,6 +1,6 @@
 # Modules that need development
 
-Below is an overview of areas where we need contributers in. If you are interested in contributing to this project, please read through the **[.](contribution_guide.md){step}** beforehand. 
+Below is an overview of areas where we need contributers in. If you are interested in contributing to this project, please read through the  beforehand. 
 ## [.](hardware.md){step}
 * Parts to be added
     * Multiplex IC

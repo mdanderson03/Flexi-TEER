@@ -25,7 +25,7 @@
 [Solder Sucker]:Parts.yaml#solder_sucker
 [Soldering Iron]:Parts.yaml#Soldering_Iron
 [Grabber Tool]:Parts.yaml#Grabber
-[Soldering]{Qty:1, cat: skills}
+
 
 
 # Assembly Instructions

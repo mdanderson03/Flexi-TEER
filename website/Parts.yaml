@@ -126,7 +126,7 @@ MAX4644EUAT:
         Footprint : UMAX-8
     Suppliers:
         Amazon:
-            PartNo: MAX4644EUA+T
+            PartNo: MAX4644EUAT
             Link: https://www.mouser.com/ProductDetail/700-MAX4644EUA%2bT
 
 Curved_Solder_Iron_Tip:
