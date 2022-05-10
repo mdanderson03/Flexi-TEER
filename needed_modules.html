@@ -2,22 +2,25 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Untitled project</title>
+    <title>Flexi-TEER</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="../static/Logo/favicon.ico" />
-<link rel="icon" type="image/png" href="../static/Logo/favicon-32x32.png" sizes="32x32" />
-<link rel="icon" type="image/png" href="../static/Logo/favicon-16x16.png" sizes="16x16" />
+    <link rel="shortcut icon" href="./static/Logo/favicon.ico" />
+<link rel="icon" type="image/png" href="./static/Logo/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="./static/Logo/favicon-16x16.png" sizes="16x16" />
 
-    <link href="../static/style.css" rel="stylesheet">
-            <script type="text/javascript" src="../static/3d-viewer.js"></script>
+    <link href="./static/style.css" rel="stylesheet">
+            <script type="text/javascript" src="./static/3d-viewer.js"></script>
     </head>
 <body>
 <header class="site-header">
     <div class="wrapper">
         <div class=header-text>
    
-    <h1 class="site-title">Untitled project</h1>
+    <h1 class="site-title">Flexi-TEER</h1>
+   
+    <p class="author">by MD Anderson</p>
+    <p class="affiliation">Boston Children's Hospital</p>
 </div>
             </div>
 </header>
@@ -33,49 +36,64 @@
                 </a>
                 <ul class="nav-list">
                 <li>
-    <a class="navhome" href="../">
-        Untitled project
+    <a class="navhome" href="./">
+        Flexi-TEER
     </a>
 </li>
+<li class="not-active">
+    <a class="not-active" href="./index_BOM.html">
+        Bill of Materials
+    </a>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="./assembly_instructions.html">
+        Assembly Instructions
+    </a>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="./General_use.html">
+        General Use
+    </a>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="./Tutorials.html">
+        Tutorial
+    </a>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="./theory.html">
+        Theory
+    </a>
+    </li>
 <li class="active">
-    <a class="active" href="../website/index.html">
-        Flexi-TEER
+    <a class="active" href="./needed_modules.html">
+        Modules that need development
     </a>
         <ul class="sub-nav-list">
                 <li>
-            <a class="not-active" href="../website/index_BOM.html">
-                Bill of Materials
+            <a class="not-active" href="./index/hardware.html">
+                Hardware
             </a>
         </li>
                 <li>
-            <a class="not-active" href="../website/assembly_instructions.html">
-                Assembly Instructions
-            </a>
-        </li>
-                <li>
-            <a class="not-active" href="../website/General_use.html">
-                General Use
-            </a>
-        </li>
-                <li>
-            <a class="not-active" href="../website/Tutorials.html">
-                Tutorial
-            </a>
-        </li>
-                <li>
-            <a class="not-active" href="../website/theory.html">
-                Theory
-            </a>
-        </li>
-                <li>
-            <a class="active" href="../website/needed_modules.html">
-                Modules that need development
+            <a class="not-active" href="./index/Accessories.html">
+                Accessories
             </a>
         </li>
             </ul>
     </li>
 <li class="not-active">
-    <a class="not-active" href="../website/contribution_guide.html">
+    <a class="not-active" href="./contribution_guide.html">
+        Contribute to Flexi-TEER
+    </a>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="./website/index.html">
+        Flexi-TEER
+    </a>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="./website/contribution_guide.html">
         Contribute to Flexi-TEER
     </a>
     </li>
@@ -86,7 +104,7 @@
         <div class="wrapper">
     <h1 id="modules-that-need-development">Modules that need development</h1>
 <p>Below is an overview of areas where we need contributers in. If you are interested in contributing to this project, please read through the  beforehand. </p>
-<h2 id="hardware"><a href="index/website/hardware.html" title="">Hardware</a></h2>
+<h2 id="hardware"><a href="index/hardware.html" title="">Hardware</a></h2>
 <ul>
 <li>Parts to be added<ul>
 <li>Multiplex IC</li>
@@ -99,7 +117,7 @@
 <p><embed src="documents/Schematic_Flexi-TEER_2022-04-20.pdf" type="application/pdf" width="100%" height="600px" /></p>
 <h2 id="hardware-testing">Hardware Testing</h2>
 <p>All hardware has been breadboard tested, but further testing and characterization with multimeters and oscilloscopes are needed. </p>
-<h2 id="accessories"><a href="index/website/Accessories.html" title="">Accessories</a></h2>
+<h2 id="accessories"><a href="index/Accessories.html" title="">Accessories</a></h2>
 <p>We need the models below recreated in FreeCAD and a case for the electronics created. </p>
 <ul>
 <li>TEER chamber that holds transwell in place as well as electrodes. Below is current model. </li>
@@ -112,15 +130,17 @@
 <noscript><a href="models/TEErMainDesignA.stl"></a></noscript>
 <p><gb3d-viewer src="models/TEErMainDesignA.stl"></gb3d-viewer></p>
 <hr />
-<p><a href="ac_theory.html">Previous page</a> | <a href="index/website/hardware.html">Next page</a></p>
+<p><a href="ac_theory.html">Previous page</a> | <a href="index/hardware.html">Next page</a></p>
     </div>
 </div>
 <footer class="site-footer">
     <div class="wrapper">
         <a target="_blank" rel="noopener noreferrer" href="https://gitbuilding.io">
-    <img class="icon" src="../static/Logo/GitBuilding500x.png" alt="GitBuilding logo">
+    <img class="icon" src="./static/Logo/GitBuilding500x.png" alt="GitBuilding logo">
     <span class="info">Documentation powered by GitBuilding</span>
 </a>
+    <p class="author">©2022 MD Anderson</p>
+    <p class="email">Contact: <a href="mailto:md.anderson03@gmail.com">md.anderson03@gmail.com</a></p>
 
     </div>
 </footer></body>
