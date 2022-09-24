@@ -4,3 +4,5 @@
 _build/
 # Ignore the directory that GitBuilding will HTML markdown to
 _site/
+
+*backups
