@@ -46,9 +46,9 @@ void loop() {
   // put your main code here, to run repeatedly:
 
 analogWrite(DAC0, 426);
-//delay(40);
-//analogWrite(DAC0, 626);
-//delay(40);
+delay(40);
+analogWrite(DAC0, 626);
+delay(40);
 
 
 
