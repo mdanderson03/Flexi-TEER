@@ -51,7 +51,6 @@ digitalWrite(batt_stby, LOW);
 analogWriteResolution(10);
 
 
-ads.setGain(GAIN_TWOTHIRDS);  // 2/3x gain +/- 6.144V  1 bit = 3mV      0.1875mV (default)
 
 if (!ads.begin()) {
   Serial.println("Failed to initialize ADS.");
@@ -66,25 +65,25 @@ if (!ads.begin()) {
 void loop() {
   // put your main code here, to run repeatedly:
 int16_t results;
-float   multiplier = 3.0F; 
+
 
 
 analogWrite(DAC0, 426);
 
 
-//results = ads.readADC_Differential_0_1();
-
-//Serial.print("Differential: "); Serial.print(results); Serial.print("("); Serial.print(results * multiplier); Serial.println("mV)");
-
+results = ads.readADC_Differential_0_1();
+Serial.print("Differential: "); Serial.print(results); Serial.print("("); Serial.println("mV)");
 
 
 
+delay(40);
+analogWrite(DAC0, 626);
+
+results = ads.readADC_Differential_0_1();
+Serial.print("Differential: "); Serial.print(results); Serial.print("("); Serial.println("mV)");
 
 
-
-//delay(40);
-//analogWrite(DAC0, 626);
-//delay(40);
+delay(40);
 
 
 
