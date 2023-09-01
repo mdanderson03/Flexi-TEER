@@ -1,91 +1,61 @@
-#include <Adafruit_ADS1X15.h>
+// --------------------------------------
+// i2c_scanner
+//
+// Modified from https://playground.arduino.cc/Main/I2cScanner/
+// --------------------------------------
 
-Adafruit_ADS1015 ads;     /* Use this for the 12-bit version */
+#include <Wire.h>
 
-#define mux_enb_pin  11
-#define lvl_trans_en_pin 13
-#define a_pin A2
-#define b_pin A1
-#define c_pin A3
-#define pd_adc_driver_pin A7
-#define batt_stby 9
-
-
-
-int i = 1;
-int value = 0;
-
+// Set I2C bus to use: Wire, Wire1, etc.
+#define WIRE Wire
 
 void setup() {
-  // put your setup code here, to run once:
+  WIRE.begin();
 
-Serial.begin(115200);
-
-delay(2000);
-
-Serial.println("Hello!");
-
-Serial.println("Getting differential reading from AIN0 (P) and AIN1 (N)");
-Serial.println("ADC Range: +/- 6.144V (1 bit = 3mV/ADS1015, 0.1875mV/ADS1115)");
-
-
-pinMode(batt_stby, OUTPUT);
-pinMode(mux_enb_pin, OUTPUT);
-pinMode(lvl_trans_en_pin, OUTPUT);
-pinMode(a_pin, INPUT);
-pinMode(b_pin, OUTPUT);
-pinMode(c_pin, OUTPUT);
-pinMode(pd_adc_driver_pin, OUTPUT);
-pinMode(DAC0, OUTPUT);
-
-digitalWrite(lvl_trans_en_pin, HIGH);
-digitalWrite(mux_enb_pin, HIGH);
-
-
-digitalWrite(a_pin, LOW);
-digitalWrite(b_pin, LOW);
-digitalWrite(c_pin, LOW);
-digitalWrite(pd_adc_driver_pin, HIGH);
-digitalWrite(batt_stby, LOW);
-
-analogWriteResolution(10);
-
-
-
-if (!ads.begin()) {
-  Serial.println("Failed to initialize ADS.");
-  while (1);
+  Serial.begin(9600);
+  while (!Serial)
+     delay(10);
+  Serial.println("\nI2C Scanner");
 }
-
-}
-
-
 
 
 void loop() {
-  // put your main code here, to run repeatedly:
-int16_t results;
+  byte error, address;
+  int nDevices;
 
+  Serial.println("Scanning...");
 
+  nDevices = 0;
+  for(address = 1; address < 127; address++ ) 
+  {
+    // The i2c_scanner uses the return value of
+    // the Write.endTransmisstion to see if
+    // a device did acknowledge to the address.
+    WIRE.beginTransmission(address);
+    error = WIRE.endTransmission();
 
-analogWrite(DAC0, 426);
+    if (error == 0)
+    {
+      Serial.print("I2C device found at address 0x");
+      if (address<16) 
+        Serial.print("0");
+      Serial.print(address,HEX);
+      Serial.println("  !");
 
+      nDevices++;
+    }
+    else if (error==4) 
+    {
+      Serial.print("Unknown error at address 0x");
+      if (address<16) 
+        Serial.print("0");
+      Serial.println(address,HEX);
+    }    
+  }
+  if (nDevices == 0)
+    Serial.println("No I2C devices found\n");
+  else
+    Serial.println("done\n");
 
-results = ads.readADC_Differential_0_1();
-Serial.print("Differential: "); Serial.print(results); Serial.print("("); Serial.println("mV)");
-
-
-
-delay(40);
-analogWrite(DAC0, 626);
-
-results = ads.readADC_Differential_0_1();
-Serial.print("Differential: "); Serial.print(results); Serial.print("("); Serial.println("mV)");
-
-
-delay(40);
-
-
-
-
+  delay(5000);           // wait 5 seconds for next scan
 }

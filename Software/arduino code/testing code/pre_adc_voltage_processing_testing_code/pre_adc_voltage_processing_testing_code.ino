@@ -60,9 +60,9 @@ void loop() {
 
 //int16_t adc0, adc1, adc2, adc3;
 
-//analogWrite(DAC0, 426);
-//delay(40);
-analogWrite(DAC0, 726);
+analogWrite(DAC0, 426);
+delay(40);
+analogWrite(DAC0, 626);
 delay(40);
 
 //adc0 = ads1015.readADC_SingleEnded(0);
