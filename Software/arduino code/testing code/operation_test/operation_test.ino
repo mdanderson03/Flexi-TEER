@@ -19,45 +19,45 @@ int value = 0;
 void setup() {
   // put your setup code here, to run once:
 
-Serial.begin(115200);
+  Serial.begin(115200);
 
-delay(2000);
+  delay(2000);
 
-Serial.println("Hello!");
+  Serial.println("Hello!");
 
-Serial.println("Getting differential reading from AIN0 (P) and AIN1 (N)");
-Serial.println("ADC Range: +/- 4.096V (1 bit = 2mV/ADS1015, 0.1875mV/ADS1115)");
-
-
-pinMode(batt_stby, OUTPUT);
-pinMode(mux_enb_pin, OUTPUT);
-pinMode(lvl_trans_en_pin, OUTPUT);
-pinMode(a_pin, INPUT);
-pinMode(b_pin, OUTPUT);
-pinMode(c_pin, OUTPUT);
-pinMode(pd_adc_driver_pin, OUTPUT);
-pinMode(DAC0, OUTPUT);
-
-digitalWrite(lvl_trans_en_pin, HIGH);
-digitalWrite(mux_enb_pin, HIGH);
+  Serial.println("Getting differential reading from AIN0 (P) and AIN1 (N)");
+  Serial.println("ADC Range: +/- 4.096V (1 bit = 2mV/ADS1015, 0.1875mV/ADS1115)");
 
 
-digitalWrite(a_pin, LOW);
-digitalWrite(b_pin, LOW);
-digitalWrite(c_pin, LOW);
-digitalWrite(pd_adc_driver_pin, HIGH);
-digitalWrite(batt_stby, LOW);
+  pinMode(batt_stby, OUTPUT);
+  pinMode(mux_enb_pin, OUTPUT);
+  pinMode(lvl_trans_en_pin, OUTPUT);
+  pinMode(a_pin, INPUT);
+  pinMode(b_pin, OUTPUT);
+  pinMode(c_pin, OUTPUT);
+  pinMode(pd_adc_driver_pin, OUTPUT);
+  pinMode(DAC0, OUTPUT);
 
-analogWriteResolution(10);
-
-ads1015.setGain(GAIN_ONE);
-
+  digitalWrite(lvl_trans_en_pin, HIGH);
+  digitalWrite(mux_enb_pin, HIGH);
 
 
-if (!ads.begin()) {
-  Serial.println("Failed to initialize ADS.");
-  while (1);
-}
+  digitalWrite(a_pin, LOW);
+  digitalWrite(b_pin, LOW);
+  digitalWrite(c_pin, LOW);
+  digitalWrite(pd_adc_driver_pin, HIGH);
+  digitalWrite(batt_stby, LOW);
+
+  analogWriteResolution(10);
+
+  ads1015.setGain(GAIN_ONE);
+
+
+
+  if (!ads.begin()) {
+    Serial.println("Failed to initialize ADS.");
+    while (1);
+  }
 
 }
 
