@@ -50,7 +50,7 @@ void setup() {
 
   analogWriteResolution(10);
 
-  ads1015.setGain(GAIN_ONE);
+  //ads1015.setGain(GAIN_ONE);
 
 
 
@@ -79,6 +79,7 @@ results = abs(results);
 resistance = 40.9 * results;
 Serial.print("Resistance: "); Serial.print(results); Serial.print("("); Serial.println("ohm)");
 
+delay(200);
 
 delay(20);
 analogWrite(DAC0, 626);
@@ -90,6 +91,6 @@ resistance = 40.9 * results;
 Serial.print("Resistance: "); Serial.print(results); Serial.print("("); Serial.println("ohm)");
 
 
-
+delay(200);
 
 }
