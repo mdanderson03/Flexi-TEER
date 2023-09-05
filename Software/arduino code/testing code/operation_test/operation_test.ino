@@ -73,14 +73,14 @@ float resistance;
 delay(20);
 analogWrite(DAC0, 426);
 delay(20);
-results = ads.readADC_Differential_0_1();
+results = ads.readADC_Differential_0_1()*3;
 Serial.print("Differential: "); Serial.print(results); Serial.print("("); Serial.println("mV)");
 results = abs(results);
-resistance = 40.9 * results;
-Serial.print("Resistance: "); Serial.print(results); Serial.print("("); Serial.println("ohm)");
+resistance = 8.33 * results;
+Serial.print("Resistance: "); Serial.print(resistance); Serial.print("("); Serial.println("ohm)");
 
 delay(200);
-
+/*
 delay(20);
 analogWrite(DAC0, 626);
 delay(20);
@@ -89,7 +89,7 @@ Serial.print("Differential: "); Serial.print(results); Serial.print("("); Serial
 results = abs(results);
 resistance = 40.9 * results;
 Serial.print("Resistance: "); Serial.print(results); Serial.print("("); Serial.println("ohm)");
-
+*/
 
 delay(200);
 
