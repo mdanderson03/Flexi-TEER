@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Untitled project</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="../static/Logo/favicon.ico" />
+<link rel="icon" type="image/png" href="../static/Logo/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="../static/Logo/favicon-16x16.png" sizes="16x16" />
+
+    <link href="../static/style.css" rel="stylesheet">
+                    
+</head>
+<body>
+<header class="site-header">
+    <div class="wrapper header-wrapper" >
+        <div class=header-text>
+   
+    <h1 class="site-title">Untitled project</h1>
+</div>
+            </div>
+</header>
+<div class="page-content">
+            <div>
+            <nav class="sidebar">
+                <a href="#" class="menu-icon">
+                <svg viewBox="0 0 18 15">
+                    <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                    <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                    <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                </svg>
+                </a>
+                <ul class="nav-list">
+                <li>
+    <a class="navhome" href="../">
+        Untitled project
+    </a>
+</li>
+<li class="not-active">
+    <a class="not-active" href="../docs/contribution_guide.html">
+        Contribute to Flexi-TEER
+    </a>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="../docs/needed_modules.html">
+        Modules that need development
+    </a>
+    </li>
+
+                </ul>
+            </nav>
+        </div>
+        <div class="wrapper">
+    <h1 id="ac-theory">AC Theory</h1>
+<p>The DC analysis section is interesting, but not practical. The charge build up on membranes is a health hazard to the cells and it still depends on measuring within a time window. Too fast and charge has not sufficiently built
+up on the cells membrane to force all of the current through the tight junctions. Too slow and and the current can become too low to accurately measure. </p>
+<p>To address these concerns and to extract more components, we turn to AC analysis.</p>
+<p><img alt="" src="images/4_electrode001.png" title="" /></p>
+<p>We are still using the 4 electrode circuit, but we just use AC current instead of DC.</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>\tag</mi><mrow><mn>1</mn></mrow><mi>Z</mi><mo>&#x0003D;</mo><msub><mi>Z</mi><mrow><mn>1</mn></mrow></msub><mo>&#x0002B;</mo><msub><mi>Z</mi><mrow><mn>2</mn></mrow></msub></mrow></math></p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>\tag</mi><mrow><mn>2</mn></mrow><msub><mi>Z</mi><mrow><mn>1</mn></mrow></msub><mo>&#x0003D;</mo><msub><mi>R</mi><mrow><mi>m</mi><mi>e</mi><mi>d</mi></mrow></msub><mo>&#x0002B;</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mo>&#x02212;</mo><mi>j</mi></mrow><mrow><mi>&#x003C9;</mi><mo>&#x0002A;</mo><msub><mi>C</mi><mrow><mi>e</mi></mrow></msub></mrow></mfrac></mstyle></mrow></math></p>
+<p>Where -j is imaginary i (standard syntax for electronics as i is typically a current value) and omega is angular freq. </p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>\tag</mi><mrow><mn>3</mn></mrow><msub><mi>Z</mi><mrow><mn>2</mn></mrow></msub><mo>&#x0003D;</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mn>1</mn></mrow><mrow><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mn>1</mn></mrow><mrow><msub><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow></msub></mrow></mfrac></mstyle><mo>&#x0002B;</mo><mi>j</mi><mo>&#x0002A;</mo><mi>&#x003C9;</mi><mo>&#x0002A;</mo><msub><mi>C</mi><mrow><mi>c</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi></mrow></msub></mrow></mfrac></mstyle><mo>&#x0003D;</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><msub><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow></msub></mrow><mrow><mn>1</mn><mo>&#x0002B;</mo><mi>j</mi><mo>&#x0002A;</mo><mi>&#x003C9;</mi><mo>&#x0002A;</mo><msub><mi>C</mi><mrow><mi>c</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi></mrow></msub><mo>&#x0002A;</mo><msub><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow></msub></mrow></mfrac></mstyle></mrow></math></p>
+<p>Multiple (3) by the complex conjugate of its denominator</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>Z</mi><mrow><mn>2</mn></mrow></msub><mo>&#x0003D;</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><msub><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow></msub><mo>&#x0002A;</mo><mo stretchy="false">&#x00028;</mo><mn>1</mn><mo>&#x02212;</mo><mi>j</mi><mo>&#x0002A;</mo><mi>&#x003C9;</mi><mo>&#x0002A;</mo><msub><mi>C</mi><mrow><mi>c</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi></mrow></msub><mo>&#x0002A;</mo><msub><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow></msub><mo stretchy="false">&#x00029;</mo></mrow><mrow><mn>1</mn><mo>&#x0002B;</mo><msup><mi>&#x003C9;</mi><mn>2</mn></msup><mo>&#x0002A;</mo><msubsup><mi>C</mi><mrow><mi>c</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi></mrow><mn>2</mn></msubsup><mo>&#x0002A;</mo><msubsup><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow><mn>2</mn></msubsup></mrow></mfrac></mstyle><mo>&#x0003D;</mo><mo stretchy="false">[</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mn>1</mn></mrow><mrow><mn>1</mn><mo>&#x0002B;</mo><msup><mi>&#x003C9;</mi><mn>2</mn></msup><mo>&#x0002A;</mo><msubsup><mi>C</mi><mrow><mi>c</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi></mrow><mn>2</mn></msubsup><mo>&#x0002A;</mo><msubsup><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow><mn>2</mn></msubsup></mrow></mfrac></mstyle><mo stretchy="false">]</mo><mo>&#x0002A;</mo><mo stretchy="false">&#x00028;</mo><msub><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow></msub><mo>&#x02212;</mo><mi>j</mi><mo>&#x0002A;</mo><mi>&#x003C9;</mi><mo>&#x0002A;</mo><msub><mi>C</mi><mrow><mi>c</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi></mrow></msub><mo>&#x0002A;</mo><msubsup><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow><mn>2</mn></msubsup><mo stretchy="false">&#x00029;</mo></mrow></math></p>
+<p>Separate terms that are real and imaginary</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>Z</mi><mo>&#x0003D;</mo><mo stretchy="false">[</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mn>1</mn></mrow><mrow><mn>1</mn><mo>&#x0002B;</mo><msup><mi>&#x003C9;</mi><mn>2</mn></msup><mo>&#x0002A;</mo><msubsup><mi>C</mi><mrow><mi>c</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi></mrow><mn>2</mn></msubsup><mo>&#x0002A;</mo><msubsup><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow><mn>2</mn></msubsup></mrow></mfrac></mstyle><mo stretchy="false">]</mo><mo>&#x0002A;</mo><mo stretchy="false">[</mo><mo stretchy="false">&#x00028;</mo><msub><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow></msub><mo>&#x0002B;</mo><msub><mi>R</mi><mrow><mi>m</mi><mi>e</mi><mi>d</mi></mrow></msub><mo>&#x0002B;</mo><msup><mi>&#x003C9;</mi><mn>2</mn></msup><mo>&#x0002A;</mo><msubsup><mi>C</mi><mrow><mi>c</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi></mrow><mn>2</mn></msubsup><mo>&#x0002A;</mo><msubsup><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow><mn>2</mn></msubsup><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><mi>j</mi><mo>&#x0002A;</mo><mo stretchy="false">[</mo><mo stretchy="false">&#x00028;</mo><mo>&#x02212;</mo><msup><mi>&#x003C9;</mi><mn>2</mn></msup><mo>&#x0002A;</mo><msub><mi>C</mi><mrow><mi>e</mi></mrow></msub><mo>&#x0002A;</mo><msub><mi>C</mi><mrow><mi>c</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi></mrow></msub><mo>&#x0002A;</mo><msubsup><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow><mn>2</mn></msubsup><mo>&#x02212;</mo><mn>1</mn><mo>&#x02212;</mo><msup><mi>&#x003C9;</mi><mn>2</mn></msup><mo>&#x0002A;</mo><msubsup><mi>C</mi><mrow><mi>c</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi></mrow><mn>2</mn></msubsup><mo>&#x0002A;</mo><msubsup><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow><mn>2</mn></msubsup><mo stretchy="false">&#x00029;</mo><mo>&#x0002A;</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mn>1</mn></mrow><mrow><mi>&#x003C9;</mi><mo>&#x0002A;</mo><msub><mi>C</mi><mrow><mi>e</mi></mrow></msub></mrow></mfrac></mstyle><mo stretchy="false">]</mo><mo stretchy="false">]</mo></mrow></math></p>
+<p>Lets make some new variables to make it easier to read</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>\tag</mi><mrow><mn>6</mn></mrow><mi>&#x003B1;</mi><mo>&#x0003D;</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mn>1</mn></mrow><mrow><mn>1</mn><mo>&#x0002B;</mo><msup><mi>&#x003C9;</mi><mn>2</mn></msup><mo>&#x0002A;</mo><msubsup><mi>C</mi><mrow><mi>c</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi></mrow><mn>2</mn></msubsup><mo>&#x0002A;</mo><msubsup><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow><mn>2</mn></msubsup></mrow></mfrac></mstyle><mo>&#x0002C;</mo><mspace width="1em" /><mi>&#x003B2;</mi><mo>&#x0003D;</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mn>1</mn></mrow><mrow><mi>&#x003C9;</mi><mo>&#x0002A;</mo><msub><mi>C</mi><mrow><mi>e</mi></mrow></msub></mrow></mfrac></mstyle></mrow></math></p>
+<p>Sub (6) into (5)</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>Z</mi><mo>&#x0003D;</mo><mi>&#x003B1;</mi><mo>&#x0002A;</mo><mo stretchy="false">[</mo><mo stretchy="false">&#x00028;</mo><msub><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow></msub><mo>&#x0002B;</mo><msub><mi>R</mi><mrow><mi>m</mi><mi>e</mi><mi>d</mi></mrow></msub><mo>&#x0002B;</mo><msup><mi>&#x003C9;</mi><mn>2</mn></msup><mo>&#x0002A;</mo><msubsup><mi>C</mi><mrow><mi>c</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi></mrow><mn>2</mn></msubsup><mo>&#x0002A;</mo><msubsup><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow><mn>2</mn></msubsup><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><mi>j</mi><mo>&#x0002A;</mo><mi>&#x003B2;</mi><mo>&#x0002A;</mo><mo stretchy="false">[</mo><mo>&#x02212;</mo><msup><mi>&#x003C9;</mi><mn>2</mn></msup><mo>&#x0002A;</mo><msub><mi>C</mi><mrow><mi>e</mi></mrow></msub><mo>&#x0002A;</mo><msub><mi>C</mi><mrow><mi>c</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi></mrow></msub><mo>&#x0002A;</mo><msubsup><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow><mn>2</mn></msubsup><mo>&#x02212;</mo><msup><mi>&#x003C9;</mi><mn>2</mn></msup><mo>&#x0002A;</mo><msubsup><mi>C</mi><mrow><mi>c</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi></mrow><mn>2</mn></msubsup><mo>&#x0002A;</mo><msubsup><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow><mn>2</mn></msubsup><mo>&#x02212;</mo><mn>1</mn><mo stretchy="false">]</mo><mo stretchy="false">]</mo></mrow></math></p>
+<p>Lets reduce this further</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>R</mi><mrow><mi>b</mi><mi>a</mi><mi>s</mi><mi>e</mi></mrow></msub><mo>&#x0003D;</mo><msub><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow></msub><mo>&#x0002B;</mo><msub><mi>R</mi><mrow><mi>m</mi><mi>e</mi><mi>d</mi></mrow></msub><mo>&#x0002B;</mo><msup><mi>&#x003C9;</mi><mn>2</mn></msup><mo>&#x0002A;</mo><msubsup><mi>C</mi><mrow><mi>c</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi></mrow><mn>2</mn></msubsup><mo>&#x0002A;</mo><msubsup><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow><mn>2</mn></msubsup><mo>&#x0002C;</mo><mspace width="1em" /><mi>a</mi><mi>n</mi><mi>d</mi><mspace width="1em" /><msub><mi>X</mi><mrow><mi>b</mi><mi>a</mi><mi>s</mi><mi>e</mi></mrow></msub><mo>&#x0003D;</mo><mo>&#x02212;</mo><mo stretchy="false">&#x00028;</mo><msup><mi>&#x003C9;</mi><mn>2</mn></msup><mo>&#x0002A;</mo><msub><mi>C</mi><mrow><mi>e</mi></mrow></msub><mo>&#x0002A;</mo><msub><mi>C</mi><mrow><mi>c</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi></mrow></msub><mo>&#x0002A;</mo><msubsup><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow><mn>2</mn></msubsup><mo>&#x0002B;</mo><msup><mi>&#x003C9;</mi><mn>2</mn></msup><mo>&#x0002A;</mo><msubsup><mi>C</mi><mrow><mi>c</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi></mrow><mn>2</mn></msubsup><mo>&#x0002A;</mo><msubsup><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow><mn>2</mn></msubsup><mo>&#x0002B;</mo><mn>1</mn><mo stretchy="false">&#x00029;</mo></mrow></math></p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>\tag</mi><mrow><mn>7</mn></mrow><mi>Z</mi><mo>&#x0003D;</mo><mi>&#x003B1;</mi><mo>&#x0002A;</mo><mo stretchy="false">[</mo><msub><mi>R</mi><mrow><mi>b</mi><mi>a</mi><mi>s</mi><mi>e</mi></mrow></msub><mo>&#x02212;</mo><mi>j</mi><mo>&#x0002A;</mo><mi>&#x003B2;</mi><mo>&#x0002A;</mo><msub><mi>X</mi><mrow><mi>b</mi><mi>a</mi><mi>s</mi><mi>e</mi></mrow></msub><mo stretchy="false">]</mo></mrow></math></p>
+<p>Next to find the total resitance we must find the complex magnitude to solve for it. </p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>\tag</mi><mrow><mn>8</mn></mrow><mo>&#x02223;</mo><mi>Z</mi><mo>&#x02223;</mo><mo>&#x0003D;</mo><mroot><mo>&#x0002A;</mo><mn>2</mn></mroot><mrow><mi>z</mi><mo>&#x0002A;</mo><msup><mi>z</mi><mrow><mo>&#x022C6;</mo></mrow></msup></mrow><mo>&#x0003D;</mo><mi>&#x003B1;</mi><mo>&#x0002A;</mo><mroot><mo>&#x0002A;</mo><mn>2</mn></mroot><mrow><msubsup><mi>R</mi><mrow><mi>b</mi><mi>a</mi><mi>s</mi><mi>e</mi></mrow><mn>2</mn></msubsup><mo>&#x0002B;</mo><msup><mi>&#x003B2;</mi><mn>2</mn></msup><mo>&#x0002A;</mo><msub><mi>X</mi><mrow><mi>b</mi><mi>a</mi><mi>s</mi><mi>e</mi></mrow></msub></mrow></mrow></math></p>
+<p>Lets look at some cases. The first will be high frequency.</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>\tag</mi><mrow><mn>9</mn></mrow><mi>i</mi><mi>f</mi><mspace width="1em" /><mi>w</mi><mo>&#x0226B;</mo><mn>1</mn><mo>&#x0002C;</mo><mi>&#x003B2;</mi><mo>&#x0002A;</mo><msub><mi>X</mi><mrow><mi>b</mi><mi>a</mi><mi>s</mi><mi>e</mi></mrow></msub><mo>&#x02248;</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><msup><mi>&#x003C9;</mi><mn>2</mn></msup></mrow><mrow><mi>&#x003C9;</mi><mo>&#x0002A;</mo><msub><mi>C</mi><mrow><mi>e</mi></mrow></msub></mrow></mfrac></mstyle><mo stretchy="false">&#x00028;</mo><msub><mi>C</mi><mrow><mi>e</mi></mrow></msub><mo>&#x0002A;</mo><msub><mi>C</mi><mrow><mi>c</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi></mrow></msub><mo>&#x0002A;</mo><msubsup><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow><mn>2</mn></msubsup><mo>&#x0002B;</mo><msubsup><mi>C</mi><mrow><mi>c</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi></mrow><mn>2</mn></msubsup><mo>&#x0002A;</mo><msubsup><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow><mn>2</mn></msubsup><mo stretchy="false">&#x00029;</mo><mo>&#x0221D;</mo><mi>&#x003C9;</mi></mrow></math></p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>\tag</mi><mrow><mn>10</mn></mrow><msub><mi>R</mi><mrow><mi>b</mi><mi>a</mi><mi>s</mi><mi>e</mi></mrow></msub><mo>&#x02248;</mo><msup><mi>&#x003C9;</mi><mn>2</mn></msup><mo>&#x0002A;</mo><msubsup><mi>C</mi><mrow><mi>c</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi></mrow><mn>2</mn></msubsup><mo>&#x0002A;</mo><msubsup><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow><mn>2</mn></msubsup><mo>&#x0002A;</mo><msub><mi>R</mi><mrow><mi>m</mi><mi>e</mi><mi>d</mi><mi>i</mi><mi>a</mi></mrow></msub><mo>&#x0221D;</mo><msup><mi>&#x003C9;</mi><mn>2</mn></msup></mrow></math></p>
+<p>R_base contributes to a higher degree than X_base and thus</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>\tag</mi><mrow><mn>11</mn></mrow><mi>Z</mi><mo>&#x02248;</mo><mi>&#x003B1;</mi><mo>&#x0002A;</mo><msup><mi>&#x003C9;</mi><mn>2</mn></msup><mo>&#x0002A;</mo><msubsup><mi>C</mi><mrow><mi>c</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi></mrow><mn>2</mn></msubsup><mo>&#x0002A;</mo><msubsup><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow><mn>2</mn></msubsup><mo>&#x02248;</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><msup><mi>&#x003C9;</mi><mn>2</mn></msup><mo>&#x0002A;</mo><msubsup><mi>C</mi><mrow><mi>c</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi></mrow><mn>2</mn></msubsup><mo>&#x0002A;</mo><msubsup><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow><mn>2</mn></msubsup><mo>&#x0002A;</mo><msub><mi>R</mi><mrow><mi>m</mi><mi>e</mi><mi>d</mi><mi>i</mi><mi>a</mi></mrow></msub></mrow><mrow><msup><mi>&#x003C9;</mi><mn>2</mn></msup><mo>&#x0002A;</mo><msubsup><mi>C</mi><mrow><mi>c</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi></mrow><mn>2</mn></msubsup><mo>&#x0002A;</mo><msubsup><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow><mn>2</mn></msubsup></mrow></mfrac></mstyle><mo>&#x0003D;</mo><msub><mi>R</mi><mrow><mi>m</mi><mi>e</mi><mi>d</mi><mi>i</mi><mi>a</mi></mrow></msub></mrow></math></p>
+<p>Now lets turn to the opposite end of the spectrum and find the solution at small omegas</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>\tag</mi><mrow><mn>12</mn></mrow><mi>a</mi><mi>t</mi><mspace width="1em" /><mi>&#x003C9;</mi><mo>&#x0226A;</mo><mn>1</mn><mo>&#x0002C;</mo><mspace width="1em" /><msub><mi>X</mi><mrow><mi>b</mi><mi>a</mi><mi>s</mi><mi>e</mi></mrow></msub><mo>&#x02248;</mo><mn>1</mn><mo>&#x0002C;</mo><mspace width="1em" /><msub><mi>R</mi><mrow><mi>b</mi><mi>a</mi><mi>s</mi><mi>e</mi></mrow></msub><mo>&#x02248;</mo><msub><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow></msub><mo>&#x0002B;</mo><msub><mi>R</mi><mrow><mi>m</mi><mi>e</mi><mi>d</mi><mi>i</mi><mi>a</mi></mrow></msub></mrow></math></p>
+<p>and</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>\tag</mi><mrow><mn>13</mn></mrow><mi>&#x003B1;</mi><mo>&#x02248;</mo><mn>1</mn><mo>&#x0002C;</mo><mspace width="1em" /><mi>&#x003B2;</mi><mo>&#x0003D;</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mn>1</mn></mrow><mrow><mi>&#x003C9;</mi><mo>&#x0002A;</mo><msub><mi>C</mi><mrow><mi>e</mi></mrow></msub></mrow></mfrac></mstyle></mrow></math></p>
+<p>thus</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>\tag</mi><mrow><mn>14</mn></mrow><mi>Z</mi><mo>&#x02248;</mo><mroot><mo>&#x0002A;</mo><mn>2</mn></mroot><mrow><mo stretchy="false">&#x00028;</mo><msub><mi>R</mi><mrow><mi>T</mi><mi>J</mi></mrow></msub><mo>&#x0002B;</mo><msub><mi>R</mi><mrow><mi>m</mi><mi>e</mi><mi>d</mi><mi>i</mi><mi>a</mi></mrow></msub><msup><mo stretchy="false">&#x00029;</mo><mn>2</mn></msup><mo>&#x0002B;</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mn>1</mn></mrow><mo>&#x0002A;</mo></mfrac></mstyle><msup><mrow><mi>&#x003C9;</mi><mo>&#x0002A;</mo><msub><mi>C</mi><mrow><mi>e</mi></mrow></msub></mrow><mn>2</mn></msup></mrow><mo>&#x02248;</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mn>1</mn></mrow><mrow><mi>&#x003C9;</mi><mo>&#x0002A;</mo><msub><mi>C</mi><mrow><mi>e</mi></mrow></msub></mrow></mfrac></mstyle></mrow></math></p>
+<p>In summary</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>\tag</mi><mrow><mn>15</mn></mrow><mi>i</mi><mi>f</mi><mspace width="1em" /><mstyle mathcolor="blue"><mrow><mi>&#x003C9;</mi><mo>&#x0226B;</mo><mn>1</mn><mo>&#x0002C;</mo><mspace width="1em" /><mi>Z</mi><mo>&#x02248;</mo><msub><mi>R</mi><mrow><mi>m</mi><mi>e</mi><mi>d</mi><mi>i</mi><mi>a</mi></mrow></msub></mrow><mstyle mathcolor="black"><mspace width="1em" /><mi>a</mi><mi>n</mi><mi>d</mi><mspace width="1em" /><mi>a</mi><mi>t</mi><mspace width="1em" /><mstyle mathcolor="red"><mrow><mi>&#x003C9;</mi><mo>&#x0226A;</mo><mn>1</mn><mo>&#x0002C;</mo><mspace width="1em" /><mi>Z</mi><mo>&#x02248;</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mn>1</mn></mrow><mrow><mi>&#x003C9;</mi><mo>&#x0002A;</mo><msub><mi>C</mi><mrow><mi>e</mi></mrow></msub></mrow></mfrac></mstyle></mrow></mstyle></mstyle></mstyle></mrow></math></p>
+<p>This allows us to perform something called impedence spectroscopy. At low freq we can determine the electrode capacitance and at high freq we can determine the resistance in the media. Subbinng those terms in and doing
+a regression to the full solution allows us to determine the cell capacitance and tight junctional resistance. Notice too in this method that nothing was time depended and thus no integrals to perform over hard to determine variables.
+Below is a sample spectra of impedences from the full solution.</p>
+<p><img alt="" src="images/spectrum.png" title="" /></p>
+    </div>
+</div>
+<footer class="site-footer">
+    <div class="wrapper">
+        <a target="_blank" rel="noopener noreferrer" href="https://gitbuilding.io">
+    <img class="icon" src="../static/Logo/GitBuilding500x.png" alt="GitBuilding logo">
+    <span class="info">Documentation powered by GitBuilding</span>
+</a>
+
+    </div>
+</footer></body>
+</html>
