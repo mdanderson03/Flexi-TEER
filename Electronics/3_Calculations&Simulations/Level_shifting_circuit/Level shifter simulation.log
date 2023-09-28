@@ -1,0 +1,22 @@
+Circuit: * D:\GitHub\Flexi-TEER\Electronics\3_Calculations&Simulations\Level_shifting_circuit\Level shifter simulation.asc
+
+Direct Newton iteration for .op point succeeded.
+Heightened Def Con from 1e-006 to 1.003e-006
+
+Date: Sun Sep 24 12:50:01 2023
+Total elapsed time: 15.856 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 2637181
+traniter = 2637166
+tranpoints = 769458
+accept = 562211
+rejected = 207248
+matrix size = 41
+fillins = 21
+solver = Alternate
+Matrix Compiler1: 4.25 KB object code size  0.7/0.5/[0.3]
+Matrix Compiler2: 4.17 KB object code size  0.4/0.6/[0.3]
+

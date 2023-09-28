@@ -1,0 +1,26 @@
+* D:\GitHub\Flexi-TEER\Electronics\3_Calculations&Simulations\Level_shifting_circuit\Level shifter simulation.asc
+R1 3V3 N001 2.2k
+R2 5V0 OUT1 2.2k
+V1 3V3 0 3.3
+V2 5V0 0 5
+V3 N003 0 PULSE(0 7 1u 0.1u 0.1u 10u 20u)
+M2 OUT2 3V3 N004 N004 BSZ060NE2LS
+R3 3V3 N004 2.2k
+R4 5V0 OUT2 2.2k
+M1 OUT1 3V3 N001 N001 BSZ060NE2LS
+M3 N001 N002 0 0 BSZ060NE2LS
+M4 N004 N002 0 0 BSZ060NE2LS
+R5 N002 N003 100
+M5 N006 0 N005 N005 FDS4435A
+R6 N005 0 100k
+R7 N006 -5V0 100k
+M6 OUT3 N006 -5V0 -5V0 BSZ060NE2LS
+R8 5V0 OUT3 100k
+V4 N005 0 PULSE(0 3.3 1u 0.1u 0.1u 10m 20m)
+V5 -5V0 0 -5
+.model NMOS NMOS
+.model PMOS PMOS
+.lib C:\Users\denis\Documents\LTspiceXVII\lib\cmp\standard.mos
+.tran 50m
+.backanno
+.end
