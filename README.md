@@ -1,4 +1,4 @@
-# This project is documented with GitBuilding
+# ![](docs/images/logo_transparent.png)
 
 ## What is GitBuilding
 
