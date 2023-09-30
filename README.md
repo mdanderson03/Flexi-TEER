@@ -1,6 +1,6 @@
 # ![](docs/images/logo_transparent.png)
 
-## What is GitBuilding
+!\[my badge\](https://badgen.net/badge/hello/world/red?icon=twitter)
 
 GitBuilding is an OpenSource project for documenting hardware projects with minimal
 effort, so you can stop writing and GitBuilding. GitBuilding is a python program that
