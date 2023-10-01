@@ -16,7 +16,7 @@ int value = 0;
 void setup() {
   // put your setup code here, to run once:
 
-pinMode(batt_stby, OUTPUT);
+pinMode(batt_stby, INPUT);
 pinMode(mux_enb_pin, OUTPUT);
 pinMode(lvl_trans_en_pin, OUTPUT);
 pinMode(a_pin, INPUT);
@@ -31,7 +31,7 @@ digitalWrite(mux_enb_pin, HIGH);
 //digitalWrite(a_pin, LOW);
 digitalWrite(b_pin, LOW);
 digitalWrite(c_pin, LOW);
-digitalWrite(batt_stby, LOW);
+//digitalWrite(batt_stby, LOW);
 
 analogWriteResolution(10);
 

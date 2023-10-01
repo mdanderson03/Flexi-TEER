@@ -1,0 +1,16 @@
+Vref = 1.65V
+Vdac = 2.24V
+R = 5000Ω
+
+Vdac1 = 3.3V/1024*426 
+Iout1 = 7.4/20*(Vdac1 - Vref)/R
+udac1 = 1500Ω * Iout1
+udac12 = 470Ω * Iout1
+
+Vdac2 = 3.3V/1024*626
+Iout2 = 7.4/20*(Vdac2 - Vref)/R
+udac2 = 1500Ω*Iout2
+udac22 = 470Ω * Iout2
+
+Iout2 = 7.4/20*(0.994V - Vref)/R
+u2 = 12000Ω*Iout2

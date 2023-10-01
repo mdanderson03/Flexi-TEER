@@ -3,6 +3,7 @@
 Adafruit_ADS1015 ads;     /* Use this for the 12-bit version */
 
 #define mux_enb_pin  11
+#define neg_5V_EN  12
 #define lvl_trans_en_pin 13
 #define a_pin A2
 #define b_pin A1
@@ -30,6 +31,7 @@ void setup() {
 
 
   pinMode(batt_stby, OUTPUT);
+  pinMode(neg_5V_EN, OUTPUT);
   pinMode(mux_enb_pin, OUTPUT);
   pinMode(lvl_trans_en_pin, OUTPUT);
   pinMode(a_pin, INPUT);
@@ -40,6 +42,7 @@ void setup() {
 
   digitalWrite(lvl_trans_en_pin, HIGH);
   digitalWrite(mux_enb_pin, HIGH);
+  digitalWrite(neg_5V_EN, HIGH);
 
 
   digitalWrite(a_pin, LOW);
@@ -80,7 +83,7 @@ resistance = 8.33 * results;
 Serial.print("Resistance: "); Serial.print(resistance); Serial.print("("); Serial.println("ohm)");
 
 delay(200);
-/*
+
 delay(20);
 analogWrite(DAC0, 626);
 delay(20);
@@ -89,7 +92,7 @@ Serial.print("Differential: "); Serial.print(results); Serial.print("("); Serial
 results = abs(results);
 resistance = 40.9 * results;
 Serial.print("Resistance: "); Serial.print(results); Serial.print("("); Serial.println("ohm)");
-*/
+
 
 delay(200);
 
