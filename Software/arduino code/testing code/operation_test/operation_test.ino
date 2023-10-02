@@ -49,7 +49,6 @@ void setup() {
   digitalWrite(b_pin, LOW);
   digitalWrite(c_pin, LOW);
   digitalWrite(pd_adc_driver_pin, HIGH);
-  digitalWrite(batt_stby, LOW);
 
   analogWriteResolution(10);
 
