@@ -26,6 +26,7 @@
 /********LIBRARIES*********/
 
 #include <Adafruit_ADS1X15.h>
+#include <Adafruit_MCP4725.h>
 #include <Arduino.h>
 #include <LiquidCrystalIO.h>
 #include <IoAbstractionWire.h>
@@ -33,13 +34,15 @@
 
 /********GLOBAL_VARIABLES*********/
 int i = -1;
-int dac_value = 0;
+uint32_t dac_value = 0;
+float temp;
 int dummy_int = 0;
 signed int test_currents[] = {
-  100, 50, 10, -10, -50, -100
+  45, 10, -10, -45
 };    
 signed int output_current_setpoint = 0;
 Adafruit_ADS1015 ads;     /* Use this for the 12-bit version */
+Adafruit_MCP4725 dac;
 LiquidCrystalI2C_RS_EN(lcd, 0x27, false)
 int buttonState = 0;
 volatile bool execute = false;
@@ -74,7 +77,8 @@ void setup() {
   digitalWrite(b_pin, LOW);
   digitalWrite(c_pin, LOW);
 
-  analogWriteResolution(10);
+  //#define DAC_RESOLUTION    (10)
+  dac.begin(0x60);
 
   if (!ads.begin()) {
     Serial.println("ADC init .... fail.");
@@ -127,19 +131,23 @@ void loop() {
     }
 
     output_current_setpoint = test_currents[i];
-    dac_value = (200*output_current_setpoint*0.005/74 + 1.65) / (3.3/1024);
-    analogWrite(DAC0, 426);
-    Serial.print("DAC value int = ");
+    //temp = 200*output_current_setpoint*0.005/74 + 2.5;
+    dac_value = (200*output_current_setpoint*0.005/74 + 2.5)*4095 / 5;
+    
+    Serial.print("output_current_setpoint = ");
+    Serial.println(output_current_setpoint);
+    Serial.print("DAC value = ");
     Serial.println(dac_value);
-    dummy_int = dummy_int + 10;
-    analogWrite(DAC0, dummy_int);
+
+    //dummy_int = dummy_int + 10;
+    dac.setVoltage(dac_value, false);
 
     //analogWrite(DAC0, dac_value);
     lcd.print("DACV = ");
-    lcd.print(dummy_int*3.3/1024);
+    lcd.print(dac_value*5/4095);
     lcd.setCursor(0, 1);
     lcd.print("Iset = ");
-    lcd.print(dummy_int);
+    lcd.print(output_current_setpoint);
     lcd.print(" uA");
     execute = false;
   }
