@@ -1,8 +1,10 @@
 # ![](docs/images/logo_transparent.png)
-![my badge](https://badgen.net/badge/Website/GitBuilding/red?icon=firefox)
-![my badge](https://badgen.net/badge/Hardware/OSHWlab/blue?icon=atom)
+
+[![my badge](https://badgen.net/badge/Website/GitBuilding/red?icon=firefox)](https://mdanderson03.github.io/Flexi-TEER/)
+[![my badge](https://badgen.net/badge/Hardware/OSHWlab/blue?icon=atom)](https://oshwlab.com/md.anderson03/flexi-teer)
 ![my badge](https://badgen.net/badge/Status/Working_on_MVP/yellow?icon=codeclimate)
-![my badge](https://badgen.net/badge/Updates/Experiment.com/green?icon=rss)
+[![my badge](https://badgen.net/badge/Updates/Experiment.com/green?icon=rss)](https://experiment.com/projects/trans-epithelial-electrical-resistance-teer-device-to-study-the-circadian-rhythms-of-intestinal-barrier-function)
+
 ## What is GitBuilding
 
 GitBuilding is an OpenSource project for documenting hardware projects with minimal
