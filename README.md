@@ -1,5 +1,8 @@
 # ![](docs/images/logo_transparent.png)
-
+![my badge](https://badgen.net/badge/Website/GitBuilding/red?icon=firefox)
+![my badge](https://badgen.net/badge/Hardware/OSHWlab/blue?icon=atom)
+![my badge](https://badgen.net/badge/Status/Working_on_MVP/yellow?icon=codeclimate)
+![my badge](https://badgen.net/badge/Updates/Experiment.com/green?icon=rss)
 ## What is GitBuilding
 
 GitBuilding is an OpenSource project for documenting hardware projects with minimal
