@@ -13,8 +13,8 @@ Flexi-TEER is an adaptable, powerful open-source transepitheal electrical resist
 
 ## Where we are
 
-At the moment the project is at the stage of hardware testing and software development. The testing status can be tracked in this document.
-We recommend using OnlineOffice for the table of contents to work correctly.
+At the moment the project is at the stage of hardware testing and software development. The testing status can be tracked in [this document](/Electronics/6_BringUp/FlexiTeer_BringUp_report.odt).
+We recommend using OnlyOffice for the table of contents to work correctly.
 
 Photo of the prototype
 
