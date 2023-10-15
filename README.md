@@ -1,6 +1,10 @@
 # ![](docs/images/logo_transparent.png)
 
-!\[my badge\](https://badgen.net/badge/hello/world/red?icon=twitter)
+![my badge](https://badgen.net/badge/Website/GitBuilding/red?icon=firefox)
+![my badge](https://badgen.net/badge/Hardware/OSHWlab/blue?icon=atom)
+![my badge](https://badgen.net/badge/Status/Working_on_MVP/yellow?icon=codeclimate)
+![my badge](https://badgen.net/badge/Updates/Experiment.com/green?icon=rss)
+
 
 GitBuilding is an OpenSource project for documenting hardware projects with minimal
 effort, so you can stop writing and GitBuilding. GitBuilding is a python program that
