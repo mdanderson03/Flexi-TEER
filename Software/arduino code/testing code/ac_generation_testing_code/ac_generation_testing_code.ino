@@ -33,19 +33,20 @@
 #include <Wire.h>
 
 /********GLOBAL_VARIABLES*********/
+volatile bool execute = false;
+int buttonState = 0;
 int i = -1;
-uint32_t dac_value = 0;
-float temp;
-int dummy_int = 0;
-signed int test_currents[] = {
-  45, 10, -10, -45
-};    
+uint32_t dac_value_bits = 0;
+float dac_value_volts = 0;
 signed int output_current_setpoint = 0;
+signed int test_currents[] = {
+  100, 50, 10, -10, -50, -100
+};  
+
+
 Adafruit_ADS1015 ads;     /* Use this for the 12-bit version */
 Adafruit_MCP4725 dac;
 LiquidCrystalI2C_RS_EN(lcd, 0x27, false)
-int buttonState = 0;
-volatile bool execute = false;
 
 
 /********INITIAL_CONFIG*********/
@@ -131,28 +132,24 @@ void loop() {
     }
 
     output_current_setpoint = test_currents[i];
-    //temp = 200*output_current_setpoint*0.005/74 + 2.5;
-    dac_value = (200*output_current_setpoint*0.005/74 + 2.5)*4095 / 5;
-    
+    dac_value_bits = (200*output_current_setpoint*0.005/75 + 2.5)*4095 / 5;
+    dac_value_volts = dac_value_bits*5/4095;
+
     Serial.print("output_current_setpoint = ");
     Serial.println(output_current_setpoint);
-    Serial.print("DAC value = ");
-    Serial.println(dac_value);
+    Serial.print("DAC value bits = ");
+    Serial.println(dac_value_bits);
+    Serial.print("DAC value volts = ");
+    Serial.println(dac_value_volts);
 
-    //dummy_int = dummy_int + 10;
-    dac.setVoltage(dac_value, false);
+    dac.setVoltage(dac_value_bits, false);
 
-    //analogWrite(DAC0, dac_value);
     lcd.print("DACV = ");
-    lcd.print(dac_value*5/4095);
+    lcd.print(dac_value_volts);
     lcd.setCursor(0, 1);
     lcd.print("Iset = ");
     lcd.print(output_current_setpoint);
     lcd.print(" uA");
     execute = false;
   }
-  //analogWrite(DAC0, 426);
-  //delay(40);
-  //analogWrite(DAC0, 626);
-  //delay(40);
 }
