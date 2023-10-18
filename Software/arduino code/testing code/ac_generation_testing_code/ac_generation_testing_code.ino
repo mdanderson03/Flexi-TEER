@@ -137,6 +137,8 @@ void loop() {
 
     Serial.print("output_current_setpoint = ");
     Serial.println(output_current_setpoint);
+    Serial.print("actual output_current_setpoint = ");
+    Serial.println(75*(dac_value_volts - 2.5)/200/5000);
     Serial.print("DAC value bits = ");
     Serial.println(dac_value_bits);
     Serial.print("DAC value volts = ");
