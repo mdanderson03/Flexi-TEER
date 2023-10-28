@@ -37,8 +37,11 @@ volatile bool execute = false;
 int buttonState = 0;
 int i = -1;
 uint32_t dac_value_bits = 0;
+uint32_t adc_value_bits = 0;
 float dac_value_volts = 0;
-signed int output_current_setpoint = 0;
+int adc_value_volts = 0;
+float resistance = 0;
+signed int output_current_setpoint = 100;
 signed int test_currents[] = {
   100, 50, 10, -10, -50, -100
 };  
@@ -120,6 +123,14 @@ void loop() {
   else{
     digitalWrite(LED_BUILTIN, LOW);
   }
+  adc_value_bits = abs(ads.readADC_Differential_0_1());
+  adc_value_volts = adc_value_bits*3;
+  Serial.print(adc_value_volts);
+  Serial.println("mV");
+  resistance = adc_value_volts/(5*output_current_setpoint);
+  Serial.print(resistance);
+  Serial.println("kOhm");
+  delay(200);
 
   if(execute){
     lcd.clear();
