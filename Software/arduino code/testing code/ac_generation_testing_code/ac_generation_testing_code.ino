@@ -33,18 +33,19 @@
 #include <Wire.h>
 
 /********GLOBAL_VARIABLES*********/
-volatile bool execute = false;
+int execute = 0;
 int buttonState = 0;
 int i = -1;
-uint32_t dac_value_bits = 0;
-uint32_t adc_value_bits = 0;
+signed int dac_value_bits = 0;
+int adc_value_bits = 0;
 float dac_value_volts = 0;
-int adc_value_volts = 0;
+float adc_value_volts = 0;
 float resistance = 0;
 signed int output_current_setpoint = 100;
 signed int test_currents[] = {
   100, 50, 10, -10, -50, -100
 };  
+float   multiplier = 3.00F; 
 
 
 Adafruit_ADS1015 ads;     /* Use this for the 12-bit version */
@@ -73,15 +74,24 @@ void setup() {
 
   digitalWrite(lvl_trans_en_pin, HIGH);
   digitalWrite(mux_enb_pin, HIGH);
-  digitalWrite(pd_adc_driver_pin, HIGH);
   digitalWrite(neg_5v_en, HIGH);
 
-
+  digitalWrite(pd_adc_driver_pin, LOW); // reworked to be the MUX control d
   digitalWrite(a_pin, LOW);
   digitalWrite(b_pin, LOW);
   digitalWrite(c_pin, LOW);
-
+ //                                                                ADS1015  ADS1115
+  //                                                                -------  -------
+  ads.setGain(GAIN_TWOTHIRDS);  // 2/3x gain +/- 6.144V  1 bit = 3mV      0.1875mV (default)
+  // ads.setGain(GAIN_ONE);        // 1x gain   +/- 4.096V  1 bit = 2mV      0.125mV
+  // ads.setGain(GAIN_TWO);        // 2x gain   +/- 2.048V  1 bit = 1mV      0.0625mV
+  // ads.setGain(GAIN_FOUR);       // 4x gain   +/- 1.024V  1 bit = 0.5mV    0.03125mV
+  // ads.setGain(GAIN_EIGHT);      // 8x gain   +/- 0.512V  1 bit = 0.25mV   0.015625mV
+  //ads.setGain(GAIN_SIXTEEN);    // 16x gain  +/- 0.256V  1 bit = 0.125mV  0.0078125mV
+ 
   //#define DAC_RESOLUTION    (10)
+  //analogReference(AR_EXTERNAL);
+  //analogWrite(DAC0, 426);
   dac.begin(0x60);
 
   if (!ads.begin()) {
@@ -103,12 +113,12 @@ void setup() {
 
 void onDetectInterrupt()
 {
-  delay(10);
-  if (digitalRead(button_enter) == HIGH){
-    execute = true;
+  delay(30);
+  if (digitalRead(button_enter) == LOW){
+    execute = 2;
   }
   else{
-    execute = false;
+    execute = 1;
   }
   
 }
@@ -123,16 +133,33 @@ void loop() {
   else{
     digitalWrite(LED_BUILTIN, LOW);
   }
-  adc_value_bits = abs(ads.readADC_Differential_0_1());
-  adc_value_volts = adc_value_bits*3;
-  Serial.print(adc_value_volts);
-  Serial.println("mV");
-  resistance = adc_value_volts/(5*output_current_setpoint);
-  Serial.print(resistance);
-  Serial.println("kOhm");
-  delay(200);
 
-  if(execute){
+  if(execute == 1){
+    adc_value_bits = -ads.readADC_Differential_0_1();
+    adc_value_volts = 100*adc_value_bits*multiplier/5;
+    adc_value_volts = adc_value_volts*0.01;
+    Serial.print(adc_value_bits);
+    Serial.print("bits ");
+    Serial.print(adc_value_bits*multiplier);
+    Serial.print("mV ");
+    Serial.print(adc_value_volts);
+    Serial.println("mV");
+    resistance = 1000*adc_value_volts/output_current_setpoint;
+    Serial.print("R=");
+    Serial.print(resistance);
+    Serial.println(" Ohm    ");
+
+
+    lcd.setCursor(0, 1);
+    lcd.print("R="); 
+    lcd.print(resistance);
+    lcd.print(" Ohm    "); 
+
+    delay(200);
+  }
+  
+
+  if(execute == 2){
     lcd.clear();
     // sizeof(test_currents)/sizeof(test_currents[0]) is used to get an array size use https://www.arduino.cc/reference/en/language/variables/utilities/sizeof/ for reference
     if(i < (sizeof(test_currents)/sizeof(test_currents[0])-1)){
@@ -144,7 +171,8 @@ void loop() {
 
     output_current_setpoint = test_currents[i];
     dac_value_bits = (200*output_current_setpoint*0.005/75 + 2.5)*4095 / 5;
-    dac_value_volts = dac_value_bits*5/4095;
+    dac_value_volts = 100*dac_value_bits*5/4095;
+    dac_value_volts = dac_value_volts*0.01;
 
     Serial.print("output_current_setpoint = ");
     Serial.println(output_current_setpoint);
@@ -157,12 +185,11 @@ void loop() {
 
     dac.setVoltage(dac_value_bits, false);
 
-    lcd.print("DACV = ");
+    lcd.print("Vd=");
     lcd.print(dac_value_volts);
-    lcd.setCursor(0, 1);
-    lcd.print("Iset = ");
+    lcd.print(" I=");
     lcd.print(output_current_setpoint);
-    lcd.print(" uA");
-    execute = false;
+    lcd.print("uA"); 
+    execute = 1;
   }
 }
