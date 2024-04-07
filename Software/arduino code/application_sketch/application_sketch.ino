@@ -15,11 +15,11 @@ bool current_decrease = false;
 bool channel_change = false;
 bool init_success = false;
 float multiplier = 0; //value to multiplier is assigned during ADC init in setup function
-int channel_iterator = -1;
+byte channel_iterator = B00000;
 signed int output_current_setpoint = 100;
 int current_iterator = -1;
 signed int test_currents[] = {
-  100, 50, 10, -10, -50, -100
+  -100, -50, -10, 10, 50, 100
 };  
 
 Adafruit_ADS1015 ads;     /* Use this for the 12-bit version */
@@ -43,8 +43,16 @@ void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   pinMode(button_enter, INPUT);
   pinMode(button_esc, INPUT);
+  pinMode(button_up, INPUT);
+  pinMode(button_right, INPUT);
+  pinMode(button_left, INPUT);
+  pinMode(button_down, INPUT);
   attachInterrupt(digitalPinToInterrupt(button_enter), onDetectInterrupt, FALLING);
   attachInterrupt(digitalPinToInterrupt(button_esc), onDetectInterrupt, FALLING);
+  attachInterrupt(digitalPinToInterrupt(button_up), onDetectInterrupt, FALLING);
+  attachInterrupt(digitalPinToInterrupt(button_right), onDetectInterrupt, FALLING);
+  attachInterrupt(digitalPinToInterrupt(button_left), onDetectInterrupt, FALLING);
+  attachInterrupt(digitalPinToInterrupt(button_down), onDetectInterrupt, FALLING);
 
   digitalWrite(lvl_trans_en_pin, HIGH);
   digitalWrite(mux_enb_pin, HIGH);
@@ -95,8 +103,22 @@ void setup() {
   lcd.print("to start");
 }
 
-void onDetectInterrupt()
-{
+void channel_selector(){
+  Serial.print("channel selector");
+  channel_iterator = channel_iterator+1;
+   Serial.print(channel_iterator & 0B0001);
+   Serial.print(channel_iterator & 0B0010);
+   Serial.print(channel_iterator & 0B0100);
+   Serial.println(channel_iterator & 0B1000);
+  /*
+  digitalWrite(pd_adc_driver_pin, LOW); // reworked to be the MUX control d
+  digitalWrite(a_pin, LOW);
+  digitalWrite(b_pin, LOW);
+  digitalWrite(c_pin, LOW);
+  */
+}
+
+void onDetectInterrupt(){
   delay(30);
   if (digitalRead(button_enter) == LOW){
     measure = false;
@@ -104,15 +126,35 @@ void onDetectInterrupt()
   }
   else
   {
-  if (digitalRead(button_esc) == LOW){
-    measure = false;
-    current_decrease = true;
-  }
-  else{
-    measure = true;
-    current_increase = false;
-    current_decrease = false;
-  }
+    if (digitalRead(button_esc) == LOW){
+      measure = false;
+      current_decrease = true;
+      channel_selector();
+    }
+    else
+    {
+      if (digitalRead(button_up) == LOW)
+      {
+        measure = true;
+        current_increase = false;
+        current_decrease = false;
+        channel_selector();
+      }
+      else
+      {
+        if (digitalRead(button_right) == LOW)        {
+        measure = true;
+        current_increase = false;
+        current_decrease = false;
+        channel_selector();
+        }
+        else{
+        measure = true;
+        current_increase = false;
+        current_decrease = false;
+        }
+      }
+    }
   }
   /*
   if (digitalRead(button_esc)==HIGH && digitalRead(button_enter ==HIGH)){
@@ -138,16 +180,16 @@ void loop() {
     int adc_value_bits = -ads.readADC_Differential_0_1();
     float adc_value_volts = 100*adc_value_bits*multiplier/5;
     adc_value_volts = adc_value_volts*0.01;
-    Serial.print(adc_value_bits);
-    Serial.print("bits ");
-    Serial.print(adc_value_bits*multiplier);
-    Serial.print("mV ");
-    Serial.print(adc_value_volts);
-    Serial.println("mV");
+    //Serial.print(adc_value_bits);
+    //Serial.print("bits ");
+    //Serial.print(adc_value_bits*multiplier);
+    //Serial.print("mV ");
+    //Serial.print(adc_value_volts);
+    //Serial.println("mV");
     float resistance = 1000*adc_value_volts/output_current_setpoint;
-    Serial.print("R=");
-    Serial.print(resistance);
-    Serial.println(" Ohm    ");
+    //Serial.print("R=");
+    //Serial.print(resistance);
+    //Serial.println(" Ohm    ");
 
 
     lcd.setCursor(0, 1);
