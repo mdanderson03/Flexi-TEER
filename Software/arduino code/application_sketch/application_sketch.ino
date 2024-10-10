@@ -31,15 +31,19 @@ LiquidCrystalI2C_RS_EN(lcd, 0x27, false)
 
 void setup() {
   Serial.begin(115200);
+  Serial.print('Working');
   /********GPIO_CONFIG*********/
   pinMode(mux_enb_pin, OUTPUT);
   pinMode(lvl_trans_en_pin, OUTPUT);
   pinMode(a_pin, OUTPUT);
   pinMode(b_pin, OUTPUT);
   pinMode(c_pin, OUTPUT);
+  pinMode(d_pin, OUTPUT);
+  //pinMode(neg_5v_en, OUTPUT);
   //pinMode(DAC0, OUTPUT);
   pinMode(scl, OUTPUT);
   pinMode(sda, OUTPUT);
+  pinMode(periph_en, OUTPUT);
   pinMode(LED_BUILTIN, OUTPUT);
   pinMode(button_enter, INPUT);
   pinMode(button_esc, INPUT);
@@ -56,12 +60,13 @@ void setup() {
 
   digitalWrite(lvl_trans_en_pin, HIGH);
   digitalWrite(mux_enb_pin, HIGH);
-  digitalWrite(neg_5v_en, HIGH);
+  //digitalWrite(neg_5v_en, HIGH);
+  digitalWrite(periph_en, HIGH);
 
-  digitalWrite(pd_adc_driver_pin, LOW); // reworked to be the MUX control d
-  digitalWrite(a_pin, LOW);
-  digitalWrite(b_pin, LOW);
-  digitalWrite(c_pin, LOW);
+  digitalWrite(a_pin, HIGH);
+  digitalWrite(b_pin, HIGH);
+  digitalWrite(c_pin, HIGH);
+  digitalWrite(d_pin, HIGH);
 
   /********ADC_CONFIG*********/
  //                                                                ADS1015  ADS1115
