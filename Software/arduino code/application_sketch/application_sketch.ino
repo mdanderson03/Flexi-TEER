@@ -31,7 +31,7 @@ LiquidCrystalI2C_RS_EN(lcd, 0x27, false)
 
 void setup() {
   Serial.begin(115200);
-  Serial.print('Working');
+  Serial.println('Working');
   /********GPIO_CONFIG*********/
   pinMode(mux_enb_pin, OUTPUT);
   pinMode(lvl_trans_en_pin, OUTPUT);
@@ -64,9 +64,9 @@ void setup() {
   digitalWrite(periph_en, HIGH);
 
   digitalWrite(a_pin, HIGH);
-  digitalWrite(b_pin, HIGH);
-  digitalWrite(c_pin, HIGH);
-  digitalWrite(d_pin, HIGH);
+  digitalWrite(b_pin, LOW);
+  digitalWrite(c_pin, LOW);
+  digitalWrite(d_pin, LOW);
 
   /********ADC_CONFIG*********/
  //                                                                ADS1015  ADS1115
