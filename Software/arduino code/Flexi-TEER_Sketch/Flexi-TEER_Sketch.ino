@@ -16,15 +16,18 @@ bool channel_change = false;
 bool init_success = false;
 float multiplier = 0; //value to multiplier is assigned during ADC init in setup function
 byte channel_iterator = B00000;
-signed int output_current_setpoint = 10;
+signed int output_current_setpoint = 20;
 float lcd_refresh_time = 2000; //time in ms between data updates for LCD screen
 float freq = 12.5; //set frequency in hertz for AC square wave
 float switch_time = 1/(freq*2) * 1000; //time between AC flips in ms
 unsigned long previousMillis = 0;
 unsigned long previousLCDMillis = 0;
 
+
 signed int pos_dac_value_bits = (output_current_setpoint + 185.64)/0.0907;
+float pos_real_current = pos_dac_value_bits * 0.0907 - 185.64; //converts to real current generated
 signed int neg_dac_value_bits = (-output_current_setpoint + 185.64)/0.0907;
+float neg_real_current = neg_dac_value_bits * 0.0907 - 185.64; //converts to real current generated
 
 int pos_neg_state = 1; //0=negative state, 1=positive state
 float resistance = 0;
@@ -126,9 +129,9 @@ void loop() {
 
       // make pos voltage measurement
       int adc_value_bits = ads.readADC_Differential_0_1();
-      float adc_value_volts = 100*adc_value_bits*multiplier/5;
+      float adc_value_volts = 100*(adc_value_bits + 1)*multiplier/5;
       adc_value_volts = adc_value_volts*0.01;
-      float resistance_measurement = 1000*adc_value_volts/output_current_setpoint;
+      float resistance_measurement = 1000*adc_value_volts/pos_real_current;
       resistance = ((resistance * resistance_average_count) + resistance_measurement)/(resistance_average_count + 1);
       //add 1 to average count
       resistance_average_count += 1;
@@ -150,9 +153,9 @@ void loop() {
 
       // make pos voltage measurement
       int adc_value_bits = ads.readADC_Differential_0_1();
-      float adc_value_volts = -100*adc_value_bits*multiplier/5;
+      float adc_value_volts = 100*(adc_value_bits + 1)*multiplier/5;
       adc_value_volts = adc_value_volts*0.01;
-      float resistance_measurement = 1000*adc_value_volts/output_current_setpoint;
+      float resistance_measurement = 1000*adc_value_volts/neg_real_current;
       resistance = ((resistance * resistance_average_count) + resistance_measurement)/(resistance_average_count + 1);
       //add 1 to average count
       resistance_average_count += 1;
@@ -172,7 +175,11 @@ if (currentMillis - previousLCDMillis >= lcd_refresh_time){
   lcd.print("R="); 
   lcd.print(resistance);
   lcd.print(" Ohm    "); 
-  resistance_average_count = 0;
+
+  lcd.setCursor(0, 0);
+  lcd.print("I="); 
+  lcd.print(pos_real_current);
+  lcd.print(" uA"); 
 
 }
   
