@@ -19,7 +19,7 @@ byte channel_iterator = B00000;
 signed int output_current_setpoint = 100;
 int current_iterator = -1;
 signed int test_currents[] = {
-  -100, -50, -10, 10, 50, 100
+  -100, -50, -1, 1,10, 100
 };  
 
 Adafruit_ADS1015 ads;     /* Use this for the 12-bit version */
@@ -31,7 +31,6 @@ LiquidCrystalI2C_RS_EN(lcd, 0x27, false)
 
 void setup() {
   Serial.begin(115200);
-  Serial.println('Working');
   /********GPIO_CONFIG*********/
   pinMode(mux_enb_pin, OUTPUT);
   pinMode(lvl_trans_en_pin, OUTPUT);
@@ -70,16 +69,16 @@ void setup() {
 
   /********ADC_CONFIG*********/
  //                                                                ADS1015  ADS1115
- //                                                                -------  -------
-  ads.setGain(GAIN_TWOTHIRDS);  // 2/3x gain +/- 6.144V  1 bit = 3mV      0.1875mV (default)
+ //                                                                 -------  -------
+  //ads.setGain(GAIN_TWOTHIRDS);  // 2/3x gain +/- 6.144V  1 bit = 3mV      0.1875mV (default)
   // ads.setGain(GAIN_ONE);        // 1x gain   +/- 4.096V  1 bit = 2mV      0.125mV
   // ads.setGain(GAIN_TWO);        // 2x gain   +/- 2.048V  1 bit = 1mV      0.0625mV
   // ads.setGain(GAIN_FOUR);       // 4x gain   +/- 1.024V  1 bit = 0.5mV    0.03125mV
   // ads.setGain(GAIN_EIGHT);      // 8x gain   +/- 0.512V  1 bit = 0.25mV   0.015625mV
   //ads.setGain(GAIN_SIXTEEN);    // 16x gain  +/- 0.256V  1 bit = 0.125mV  0.0078125mV
   multiplier = 3.00F; 
-  
-    Serial.println("Hello!");
+
+  Serial.println("Hello!");
   if (!ads.begin()) {
     Serial.println("ADC init .... fail.");
     init_success = false;
@@ -181,8 +180,8 @@ void loop() {
     digitalWrite(LED_BUILTIN, LOW);
   }
 
-  if(measure == true && init_success == true){
-    int adc_value_bits = -ads.readADC_Differential_0_1();
+  if(measure == true){
+    int adc_value_bits = ads.readADC_Differential_0_1();
     float adc_value_volts = 100*adc_value_bits*multiplier/5;
     adc_value_volts = adc_value_volts*0.01;
     //Serial.print(adc_value_bits);
@@ -202,7 +201,7 @@ void loop() {
     lcd.print(resistance);
     lcd.print(" Ohm    "); 
 
-    delay(200);
+    //delay(200);
   }
   
   if(channel_change == true){
@@ -237,9 +236,11 @@ void loop() {
     }
 
     output_current_setpoint = test_currents[current_iterator];
-    signed int dac_value_bits = (200*output_current_setpoint*0.005/75 + 2.5)*4095 / 5;
+    //signed int dac_value_bits = (200*output_current_setpoint*0.005/75 + 2.5)*4095 / 5 - 0.75;
+    signed int dac_value_bits = (output_current_setpoint + 185.64)/0.0907;
     float dac_value_volts = 100*dac_value_bits*5/4095;
-    dac_value_volts = dac_value_volts*0.01;
+    //dac_value_volts = dac_value_volts*0.01;
+    dac_value_volts = dac_value_bits;
     dac.setVoltage(dac_value_bits, false);
 
     Serial.print("output_current_setpoint = ");

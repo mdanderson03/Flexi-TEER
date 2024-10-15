@@ -1,114 +1,181 @@
-/*
-  ArduinoMqttClient - WiFi Simple Sender
-  This example connects to a MQTT broker and publishes a message to
-  a topic once a second.
-  The circuit:
-  - Arduino MKR 1000, MKR 1010 or Uno WiFi Rev2 board
-  This example code is in the public domain.
-*/
+/********LIBRARIES*********/
 
-#include <ArduinoMqttClient.h>
-#if defined(ARDUINO_SAMD_MKRWIFI1010) || defined(ARDUINO_SAMD_NANO_33_IOT) || defined(ARDUINO_AVR_UNO_WIFI_REV2)
-  #include <WiFiNINA.h>
-#elif defined(ARDUINO_SAMD_MKR1000)
-  #include <WiFi101.h>
-#elif defined(ARDUINO_ARCH_ESP8266)
-  #include <ESP8266WiFi.h>
-#elif defined(ARDUINO_PORTENTA_H7_M7) || defined(ARDUINO_NICLA_VISION) || defined(ARDUINO_ARCH_ESP32)
-  #include <WiFi.h>
-#endif
+#include "FlexiTeer_pinout.h"
+#include <Adafruit_ADS1X15.h>
+#include <Adafruit_MCP4725.h>
+#include <Arduino.h>
+#include <LiquidCrystalIO.h>
+#include <IoAbstractionWire.h>
+#include <Wire.h>
 
-#define SECRET_SSID "FiOS-KDPZB" // your WiFi access point name
-#define SECRET_PASS "pod24near9799binds" // your WiFi password 
-
-///////please enter your sensitive data in the Secret tab/arduino_secrets.h
-char ssid[] = SECRET_SSID;    // your network SSID (name)
-char pass[] = SECRET_PASS;    // your network password (use for WPA, or use as key for WEP)
-
-// To connect with SSL/TLS:
-// 1) Change WiFiClient to WiFiSSLClient.
-// 2) Change port value from 1883 to 8883.
-// 3) Change broker value to a server with a known SSL/TLS root certificate 
-//    flashed in the WiFi module.
-
-WiFiClient wifiClient;
-MqttClient mqttClient(wifiClient);
-
-const char broker[] = "192.168.1.196"; // Address of the MQTT server
-int        port     = 1883;
-const char topic[]  = "teer/voltage";
-
-const long interval = 1000;
+/********GLOBAL_VARIABLES*********/
+bool measure = false;
+bool current_increase = false;
+bool current_decrease = false;
+bool channel_change = false;
+bool init_success = false;
+float multiplier = 0; //value to multiplier is assigned during ADC init in setup function
+byte channel_iterator = B00000;
+signed int output_current_setpoint = 10;
+float lcd_refresh_time = 2000; //time in ms between data updates for LCD screen
+float freq = 12.5; //set frequency in hertz for AC square wave
+float switch_time = 1/(freq*2) * 1000; //time between AC flips in ms
 unsigned long previousMillis = 0;
+unsigned long previousLCDMillis = 0;
 
-int count = 0;
+signed int pos_dac_value_bits = (output_current_setpoint + 185.64)/0.0907;
+signed int neg_dac_value_bits = (-output_current_setpoint + 185.64)/0.0907;
+
+int pos_neg_state = 1; //0=negative state, 1=positive state
+float resistance = 0;
+int resistance_average_count = 0;
+
+Adafruit_ADS1015 ads;     /* Use this for the 12-bit version */
+Adafruit_MCP4725 dac;
+LiquidCrystalI2C_RS_EN(lcd, 0x27, false)
+
+
 
 void setup() {
-  //Initialize serial and wait for port to open:
-  Serial.begin(9600);
-  while (!Serial) {
-    ; // wait for serial port to connect. Needed for native USB port only
+  Serial.begin(115200);
+  /********GPIO_CONFIG*********/
+  pinMode(mux_enb_pin, OUTPUT);
+  pinMode(lvl_trans_en_pin, OUTPUT);
+  pinMode(a_pin, OUTPUT);
+  pinMode(b_pin, OUTPUT);
+  pinMode(c_pin, OUTPUT);
+  pinMode(d_pin, OUTPUT);
+  //pinMode(neg_5v_en, OUTPUT);
+  //pinMode(DAC0, OUTPUT);
+  pinMode(scl, OUTPUT);
+  pinMode(sda, OUTPUT);
+  pinMode(periph_en, OUTPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(button_enter, INPUT);
+  pinMode(button_esc, INPUT);
+  pinMode(button_up, INPUT);
+  pinMode(button_right, INPUT);
+  pinMode(button_left, INPUT);
+  pinMode(button_down, INPUT);
+
+  digitalWrite(lvl_trans_en_pin, HIGH);
+  digitalWrite(mux_enb_pin, HIGH);
+  //digitalWrite(neg_5v_en, HIGH);
+  digitalWrite(periph_en, HIGH);
+
+  digitalWrite(a_pin, HIGH);
+  digitalWrite(b_pin, LOW);
+  digitalWrite(c_pin, LOW);
+  digitalWrite(d_pin, LOW);
+
+  /********ADC_CONFIG*********/
+ //                                                                ADS1015  ADS1115
+ //                                                                 -------  -------
+  //ads.setGain(GAIN_TWOTHIRDS);  // 2/3x gain +/- 6.144V  1 bit = 3mV      0.1875mV (default)
+  // ads.setGain(GAIN_ONE);        // 1x gain   +/- 4.096V  1 bit = 2mV      0.125mV
+  // ads.setGain(GAIN_TWO);        // 2x gain   +/- 2.048V  1 bit = 1mV      0.0625mV
+  // ads.setGain(GAIN_FOUR);       // 4x gain   +/- 1.024V  1 bit = 0.5mV    0.03125mV
+  // ads.setGain(GAIN_EIGHT);      // 8x gain   +/- 0.512V  1 bit = 0.25mV   0.015625mV
+  //ads.setGain(GAIN_SIXTEEN);    // 16x gain  +/- 0.256V  1 bit = 0.125mV  0.0078125mV
+  multiplier = 3.00F; 
+
+  if (!ads.begin()) {
+    Serial.println("ADC init .... fail.");
+    init_success = false;
   }
 
-  // attempt to connect to WiFi network:
-  Serial.print("Attempting to connect to WPA SSID: ");
-  Serial.println(ssid);
-  while (WiFi.begin(ssid, pass) != WL_CONNECTED) {
-    // failed, retry
-    Serial.print(".");
-    delay(5000);
-  }
 
-  Serial.println("You're connected to the network");
-  Serial.println();
+  /********BUILT_IN_DAC_CONFIG*********/
+  //#define DAC_RESOLUTION    (10)
+  //analogReference(AR_EXTERNAL);
+  //analogWrite(DAC0, 426);
 
-  // You can provide a unique client ID, if not set the library uses Arduino-millis()
-  // Each client must have a unique client ID
-  // mqttClient.setId("clientId");
+  /********EXTERNAL_DAC_CONFIG*********/
+  dac.begin(0x60);
 
-  // You can provide a username and password for authentication
-  // mqttClient.setUsernamePassword("username", "password");
+  /********LCD_CONFIG*********/
+  Wire.begin();
+  Serial.println("LCD init.");
+  lcd.begin(16, 2);
+  lcd.configureBacklightPin(3);
+  lcd.backlight();
+  lcd.print("click Enter");
+  lcd.setCursor(0, 1);
+  lcd.print("to start");
 
-  Serial.print("Attempting to connect to the MQTT broker: ");
-  Serial.println(broker);
 
-  if (!mqttClient.connect(broker, port)) {
-    Serial.print("MQTT connection failed! Error code = ");
-    Serial.println(mqttClient.connectError());
-
-    while (1);
-  }
-
-  Serial.println("You're connected to the MQTT broker!");
-  Serial.println();
 }
 
+
+/********MAIN_LOOP*********/
 void loop() {
-  // call poll() regularly to allow the library to send MQTT keep alives which
-  // avoids being disconnected by the broker
-  mqttClient.poll();
 
-  // to avoid having delays in loop, we'll use the strategy from BlinkWithoutDelay
-  // see: File -> Examples -> 02.Digital -> BlinkWithoutDelay for more info
+  delay(1);
   unsigned long currentMillis = millis();
+
+
+  if (currentMillis - previousMillis >= switch_time){
+    if (pos_neg_state == 1){
+      //record new previous time
+      previousMillis = currentMillis;
+
+      //make positive current
+      dac.setVoltage(pos_dac_value_bits, false);
+      //wait for capacitance to saturate
+      delay(switch_time/2);
+
+      // make pos voltage measurement
+      int adc_value_bits = ads.readADC_Differential_0_1();
+      float adc_value_volts = 100*adc_value_bits*multiplier/5;
+      adc_value_volts = adc_value_volts*0.01;
+      float resistance_measurement = 1000*adc_value_volts/output_current_setpoint;
+      resistance = ((resistance * resistance_average_count) + resistance_measurement)/(resistance_average_count + 1);
+      //add 1 to average count
+      resistance_average_count += 1;
+
+
+
+      //flip state 
+      pos_neg_state = 0;
+    }
+
+    else {
+      //record new previous time
+      previousMillis = currentMillis;
+
+      //make positive current
+      dac.setVoltage(neg_dac_value_bits, false);
+      //wait for capacitance to saturate
+      delay(switch_time/2);
+
+      // make pos voltage measurement
+      int adc_value_bits = ads.readADC_Differential_0_1();
+      float adc_value_volts = -100*adc_value_bits*multiplier/5;
+      adc_value_volts = adc_value_volts*0.01;
+      float resistance_measurement = 1000*adc_value_volts/output_current_setpoint;
+      resistance = ((resistance * resistance_average_count) + resistance_measurement)/(resistance_average_count + 1);
+      //add 1 to average count
+      resistance_average_count += 1;
+
+      //flip state 
+      pos_neg_state = 1;
+    }
+}
+
+
+if (currentMillis - previousLCDMillis >= lcd_refresh_time){
+  //update LCD previous time
+  previousLCDMillis = currentMillis;
+
+  // update LCD with new resistance info
+  lcd.setCursor(0, 1);
+  lcd.print("R="); 
+  lcd.print(resistance);
+  lcd.print(" Ohm    "); 
+  resistance_average_count = 0;
+
+}
   
-  if (currentMillis - previousMillis >= interval) {
-    // save the last time a message was sent
-    previousMillis = currentMillis;
 
-    Serial.print("Sending message to topic: ");
-    Serial.println(topic);
-    Serial.print("hello ");
-    Serial.println(count);
-
-    // send message, the Print interface can be used to set the message contents
-    mqttClient.beginMessage(topic);
-    mqttClient.print("hello ");
-    mqttClient.print(count);
-    mqttClient.endMessage();
-
-    Serial.println();
-
-    count++;
-  }
+  
 }
