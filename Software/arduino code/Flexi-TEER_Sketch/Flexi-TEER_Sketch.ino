@@ -125,7 +125,7 @@ void loop() {
       //make positive current
       dac.setVoltage(pos_dac_value_bits, false);
       //wait for capacitance to saturate
-      delay(switch_time/2);
+      delay(switch_time * 0.9);
 
       // make pos voltage measurement
       int adc_value_bits = ads.readADC_Differential_0_1();
@@ -149,7 +149,7 @@ void loop() {
       //make positive current
       dac.setVoltage(neg_dac_value_bits, false);
       //wait for capacitance to saturate
-      delay(switch_time/2);
+      delay(switch_time * 0.9);
 
       // make pos voltage measurement
       int adc_value_bits = ads.readADC_Differential_0_1();
