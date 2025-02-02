@@ -31,6 +31,7 @@ LiquidCrystalI2C_RS_EN(lcd, 0x27, false)
 
 void setup() {
   Serial.begin(115200);
+  delay(1000);
   /********GPIO_CONFIG*********/
   pinMode(mux_enb_pin, OUTPUT);
   pinMode(lvl_trans_en_pin, OUTPUT);
@@ -63,14 +64,16 @@ void setup() {
   digitalWrite(periph_en, HIGH);
 
   digitalWrite(a_pin, HIGH);
-  digitalWrite(b_pin, LOW);
-  digitalWrite(c_pin, LOW);
-  digitalWrite(d_pin, LOW);
+  digitalWrite(b_pin, HIGH);
+  digitalWrite(c_pin, HIGH);
+  digitalWrite(d_pin, HIGH);
 
+  Wire.begin();
+  delay(1000);
   /********ADC_CONFIG*********/
  //                                                                ADS1015  ADS1115
  //                                                                 -------  -------
-  //ads.setGain(GAIN_TWOTHIRDS);  // 2/3x gain +/- 6.144V  1 bit = 3mV      0.1875mV (default)
+  ads.setGain(GAIN_TWOTHIRDS);  // 2/3x gain +/- 6.144V  1 bit = 3mV      0.1875mV (default)
   // ads.setGain(GAIN_ONE);        // 1x gain   +/- 4.096V  1 bit = 2mV      0.125mV
   // ads.setGain(GAIN_TWO);        // 2x gain   +/- 2.048V  1 bit = 1mV      0.0625mV
   // ads.setGain(GAIN_FOUR);       // 4x gain   +/- 1.024V  1 bit = 0.5mV    0.03125mV
@@ -97,29 +100,41 @@ void setup() {
   dac.begin(0x60);
 
   /********LCD_CONFIG*********/
-  Wire.begin();
-  Serial.println("LCD init.");
+  Serial.print("LCD init.");
   lcd.begin(16, 2);
   lcd.configureBacklightPin(3);
   lcd.backlight();
   lcd.print("click Enter");
   lcd.setCursor(0, 1);
   lcd.print("to start");
+  Serial.println(".... success.");
 }
 
 void channel_selector(){
   Serial.print("channel selector");
   channel_iterator = channel_iterator+1;
-   Serial.print(channel_iterator & 0B0001);
-   Serial.print(channel_iterator & 0B0010);
-   Serial.print(channel_iterator & 0B0100);
-   Serial.println(channel_iterator & 0B1000);
-  /*
-  digitalWrite(pd_adc_driver_pin, LOW); // reworked to be the MUX control d
-  digitalWrite(a_pin, LOW);
-  digitalWrite(b_pin, LOW);
-  digitalWrite(c_pin, LOW);
-  */
+   
+  bool A = (channel_iterator & 0B0001) ? HIGH : LOW;
+  bool B = (channel_iterator & 0B0010) ? HIGH : LOW;
+  bool C = (channel_iterator & 0B0100) ? HIGH : LOW;
+  bool D = (channel_iterator & 0B1000) ? HIGH : LOW;
+
+  // Print channel selection status
+  Serial.print("A=");
+  Serial.print(A);
+  Serial.print(" B=");
+  Serial.print(B);
+  Serial.print(" C=");
+  Serial.print(C);
+  Serial.print(" D=");
+  Serial.println(D);
+
+  // Apply settings to the MUX
+  digitalWrite(a_pin, !A);
+  digitalWrite(b_pin, !B);
+  digitalWrite(c_pin, !C);
+  digitalWrite(d_pin, !D);
+  digitalWrite(mux_enb_pin, HIGH);  // Keep ADC driver control LOW
 }
 
 void onDetectInterrupt(){
@@ -131,8 +146,8 @@ void onDetectInterrupt(){
   else
   {
     if (digitalRead(button_esc) == LOW){
-      measure = false;
-      current_decrease = true;
+      //measure = false;
+      //current_decrease = true;
       channel_selector();
     }
     else
@@ -181,7 +196,7 @@ void loop() {
   }
 
   if(measure == true){
-    int adc_value_bits = ads.readADC_Differential_0_1();
+    int adc_value_bits = -ads.readADC_Differential_0_1();
     float adc_value_volts = 100*adc_value_bits*multiplier/5;
     adc_value_volts = adc_value_volts*0.01;
     //Serial.print(adc_value_bits);
@@ -194,14 +209,14 @@ void loop() {
     //Serial.print("R=");
     //Serial.print(resistance);
     //Serial.println(" Ohm    ");
-
+    
 
     lcd.setCursor(0, 1);
     lcd.print("R="); 
     lcd.print(resistance);
     lcd.print(" Ohm    "); 
-
-    //delay(200);
+    //Serial.println("measurement completed");
+    delay(200);
   }
   
   if(channel_change == true){
@@ -228,13 +243,11 @@ void loop() {
       }
     }
   
-    
-
     if (current_iterator<0){
       lcd.clear();
       lcd.print("Something went wrong");
     }
-
+  
     output_current_setpoint = test_currents[current_iterator];
     //signed int dac_value_bits = (200*output_current_setpoint*0.005/75 + 2.5)*4095 / 5 - 0.75;
     signed int dac_value_bits = (output_current_setpoint + 185.64)/0.0907;
@@ -253,14 +266,20 @@ void loop() {
     Serial.println(dac_value_volts);
 
     lcd.clear();
+    //Serial.print("lcd step 1");
     lcd.print("Vd=");
+    //Serial.print("lcd step 2");
     lcd.print(dac_value_volts);
+    //Serial.print("lcd step 3");
     lcd.print(" I=");
     lcd.print(output_current_setpoint);
     lcd.print("uA"); 
-
+    //Serial.print("lcd step 4");
     current_increase = false;
     current_decrease = false;
     measure = true;
+    //Serial.print("cycle done");
+    delay(1000);
+    Serial.println("Current setting completed");
   }
 }

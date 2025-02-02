@@ -41,6 +41,7 @@ LiquidCrystalI2C_RS_EN(lcd, 0x27, false)
 
 void setup() {
   Serial.begin(115200);
+  while (!Serial) ;
   /********GPIO_CONFIG*********/
   pinMode(mux_enb_pin, OUTPUT);
   pinMode(lvl_trans_en_pin, OUTPUT);
@@ -54,6 +55,8 @@ void setup() {
   pinMode(sda, OUTPUT);
   pinMode(periph_en, OUTPUT);
   pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(batt_stby, OUTPUT);
+  pinMode(batt_chrg, INPUT);
   pinMode(button_enter, INPUT);
   pinMode(button_esc, INPUT);
   pinMode(button_up, INPUT);
@@ -61,6 +64,7 @@ void setup() {
   pinMode(button_left, INPUT);
   pinMode(button_down, INPUT);
 
+  digitalWrite(batt_stby, HIGH);
   digitalWrite(lvl_trans_en_pin, HIGH);
   digitalWrite(mux_enb_pin, HIGH);
   //digitalWrite(neg_5v_en, HIGH);
@@ -81,10 +85,15 @@ void setup() {
   // ads.setGain(GAIN_EIGHT);      // 8x gain   +/- 0.512V  1 bit = 0.25mV   0.015625mV
   //ads.setGain(GAIN_SIXTEEN);    // 16x gain  +/- 0.256V  1 bit = 0.125mV  0.0078125mV
   multiplier = 3.00F; 
-
+  Wire.begin();
+  delay(1000);
   if (!ads.begin()) {
     Serial.println("ADC init .... fail.");
     init_success = false;
+  }
+  else{
+    Serial.println("ADC init .... success.");
+    init_success = true;
   }
 
 
@@ -97,7 +106,6 @@ void setup() {
   dac.begin(0x60);
 
   /********LCD_CONFIG*********/
-  Wire.begin();
   Serial.println("LCD init.");
   lcd.begin(16, 2);
   lcd.configureBacklightPin(3);
@@ -129,6 +137,7 @@ void loop() {
 
       // make pos voltage measurement
       int adc_value_bits = ads.readADC_Differential_0_1();
+      Serial.println(adc_value_bits);
       float adc_value_volts = 100*(adc_value_bits + 1)*multiplier/5;
       adc_value_volts = adc_value_volts*0.01;
       float resistance_measurement = 1000*adc_value_volts/pos_real_current;
